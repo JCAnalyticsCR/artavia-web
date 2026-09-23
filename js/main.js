@@ -100,3 +100,32 @@
       });
   });
 })();
+
+// Animaciones continuas (marquee, radar): solo corren mientras se ven.
+// Fuera de cuadro se pausan; un bucle vivo fuera de pantalla es tirar frames.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var vivos = document.querySelectorAll('.marquee, .radar');
+  if (!vivos.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { en.target.classList.toggle('is-off', !en.isIntersecting); });
+  }, { rootMargin: '35%' });
+  vivos.forEach(function (el) { io.observe(el); });
+})();
+
+// Mapa: facade. El iframe de Google Maps solo se crea cuando el usuario lo pide.
+(function () {
+  var map = document.getElementById('map');
+  var btn = document.getElementById('map-load');
+  if (!map || !btn) return;
+  btn.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.title = 'Mapa: Corina Rodríguez, Alajuelita';
+    f.src = map.dataset.src;
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.allowFullscreen = true;
+    map.innerHTML = '';
+    map.appendChild(f);
+  });
+})();

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=20260922b">
 </head>
 <body>
 
@@ -114,7 +114,7 @@
         <path d="M106 56 H400 a8 8 0 0 1 8 8 v12 a8 8 0 0 1 -8 8 H106 z" fill="url(#kg)"/>
         <path d="M118 56 l10 -14 h14 l8 14 h18 l6 -10 h16 l8 10 h22 l10 -18 h14 l6 18 h22 l8 -12 h16 l6 12 h30 l12 -16 h14 l6 16 h12" fill="none" stroke="#F5B400" stroke-width="4" stroke-linejoin="round"/>
         <rect x="150" y="66" width="230" height="4" rx="2" fill="#F5B400" opacity=".35"/>
-        <text x="62" y="128" text-anchor="middle" class="key__txt">CHIP · TRANSPONDER</text>
+        <text x="16" y="130" text-anchor="start" class="key__txt">CHIP · TRANSPONDER</text>
       </svg>
       <figcaption>Programación en sitio. Sin remolque.</figcaption>
     </figure>
@@ -143,17 +143,28 @@
     <p class="lead">Servicio a domicilio en toda la Gran Área Metropolitana y alrededores. Salimos desde Alajuelita.</p>
   </header>
   <div class="coverage">
-    <div class="radar revelar" aria-hidden="true">
-      <div class="radar__ring radar__ring--1"></div>
-      <div class="radar__ring radar__ring--2"></div>
-      <div class="radar__ring radar__ring--3"></div>
-      <div class="radar__sweep"></div>
-      <span class="radar__center">Alajuelita</span>
-      <span class="radar__lbl radar__lbl--n">Heredia</span>
-      <span class="radar__lbl radar__lbl--e">Cartago</span>
-      <span class="radar__lbl radar__lbl--s">San José</span>
-      <span class="radar__lbl radar__lbl--w">Alajuela</span>
-    </div>
+    <figure class="radar revelar" aria-hidden="true">
+      <svg viewBox="0 0 400 400" class="radar__svg">
+        <defs>
+          <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F5B400" stop-opacity="0"/><stop offset="1" stop-color="#F5B400" stop-opacity=".45"/></linearGradient>
+          <radialGradient id="halo"><stop offset="0" stop-color="#F5B400" stop-opacity=".16"/><stop offset="1" stop-color="#F5B400" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="190" fill="url(#halo)"/>
+        <circle cx="200" cy="200" r="190" fill="none" stroke="#F5B400" stroke-opacity=".35"/>
+        <circle cx="200" cy="200" r="126" fill="none" stroke="#F5B400" stroke-opacity=".28"/>
+        <circle cx="200" cy="200" r="62" fill="none" stroke="#F5B400" stroke-opacity=".22"/>
+        <path d="M200 10 V390 M10 200 H390" stroke="#F5B400" stroke-opacity=".14"/>
+        <g class="radar__sweep"><path d="M200 200 L200 10 A190 190 0 0 1 335 65 Z" fill="url(#sweep)"/></g>
+        <circle cx="200" cy="200" r="30" fill="#F5B400" fill-opacity=".12"/>
+        <circle cx="200" cy="200" r="20" fill="#F5B400" fill-opacity=".22"/>
+        <rect x="150" y="185" width="100" height="30" rx="15" fill="#F5B400"/>
+        <text x="200" y="205" text-anchor="middle" class="radar__txt radar__txt--c">Alajuelita</text>
+        <text x="200" y="-2" text-anchor="middle" class="radar__txt" dy="14">HEREDIA</text>
+        <text x="200" y="398" text-anchor="middle" class="radar__txt">SAN JOSÉ</text>
+        <text x="4" y="204" text-anchor="start" class="radar__txt">ALAJUELA</text>
+        <text x="396" y="204" text-anchor="end" class="radar__txt">CARTAGO</text>
+      </svg>
+    </figure>
     <div class="cover">
       <div class="revelar"><h3>San José</h3><div class="chips"><span class="chip chip--soft">San José centro</span><span class="chip chip--soft">Alajuelita</span><span class="chip chip--soft">Escazú</span><span class="chip chip--soft">Desamparados</span><span class="chip chip--soft">Aserrí</span><span class="chip chip--soft">Goicoechea</span><span class="chip chip--soft">Santa Ana</span><span class="chip chip--soft">Vázquez de Coronado</span><span class="chip chip--soft">Tibás</span><span class="chip chip--soft">Moravia</span><span class="chip chip--soft">Montes de Oca</span><span class="chip chip--soft">Curridabat</span><span class="chip chip--soft">Mora</span></div></div>
       <div class="revelar"><h3>Heredia</h3><div class="chips"><span class="chip chip--soft">Heredia centro</span><span class="chip chip--soft">Barva</span><span class="chip chip--soft">Santo Domingo</span><span class="chip chip--soft">Santa Bárbara</span><span class="chip chip--soft">San Rafael</span><span class="chip chip--soft">San Isidro</span><span class="chip chip--soft">Belén</span><span class="chip chip--soft">Flores</span><span class="chip chip--soft">San Pablo</span></div></div>
@@ -249,8 +260,16 @@
         <p class="muted">Frente a Calle Herrera, Corina Rodríguez, Alajuelita, San José</p>
         <p class="strong">Abierto las 24 horas, todos los días</p>
         <p class="muted">WhatsApp: <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" target="_blank" rel="noopener">7290-7799</a> · <a href="https://www.facebook.com/p/Cerrajer%C3%ADa-Artavia-100089325142790/?locale=es_LA" target="_blank" rel="noopener">Facebook</a></p>
-        <div class="map">
-          <iframe title="Mapa: Corina Rodríguez, Alajuelita" src="https://maps.google.com/maps?q=Corina%20Rodr%C3%ADguez%2C%20Alajuelita%2C%20San%20Jos%C3%A9%2C%20Costa%20Rica&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="map" id="map" data-src="https://maps.google.com/maps?q=Corina%20Rodr%C3%ADguez%2C%20Alajuelita%2C%20San%20Jos%C3%A9%2C%20Costa%20Rica&z=15&output=embed">
+          <div class="map__facade">
+            <svg viewBox="0 0 24 24" class="map__pin" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <strong>Corina Rodríguez, Alajuelita</strong>
+            <span>Frente a Calle Herrera</span>
+            <div class="map__actions">
+              <button type="button" class="btn btn--ink btn--sm" id="map-load">Ver mapa</button>
+              <a class="btn btn--ghost btn--sm map__ext" href="https://www.google.com/maps/search/?api=1&query=Corina%20Rodr%C3%ADguez%2C%20Alajuelita%2C%20San%20Jos%C3%A9%2C%20Costa%20Rica" target="_blank" rel="noopener">Abrir en Google Maps</a>
+            </div>
+          </div>
         </div>
       </div>
       <form class="form" id="form-contacto" method="POST" action="https://formspree.io/f/REEMPLAZAR_ID" novalidate>
@@ -277,6 +296,6 @@
   <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" class="btn btn--ghost" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
-<script src="js/main.js" defer></script>
+<script src="js/main.js?v=20260922b" defer></script>
 </body>
 </html>
