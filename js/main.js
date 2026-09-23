@@ -1,8 +1,15 @@
 // Chat del hero: el visitante toca su situación y recibe la respuesta.
 (function () {
-  var replies = [{"t":"Se quedó afuera del carro","d":"Apertura de vehículos sin dañar la cerradura. Llegamos hasta donde esté."},{"t":"Perdió todas las llaves","d":"Hacemos llaves desde cero, sin necesidad de muestra. Con chip incluido."},{"t":"No le sirve el control","d":"Venta y reparación de controles para vehículo."},{"t":"Se le quebró la llave","d":"Extracción de tacos y reparación de la cerradura en el momento."},{"t":"Casa, oficina o caja fuerte","d":"Aperturas, instalación de cerraduras, cambio de combinación y amaestramiento."}];
+  var replies = [
+    { t: 'Se quedó afuera del carro', d: 'Apertura de vehículos sin dañar la cerradura. Llegamos hasta donde esté.' },
+    { t: 'Perdió todas las llaves', d: 'Hacemos llaves desde cero, sin necesidad de muestra. Con chip incluido.' },
+    { t: 'No le sirve el control', d: 'Venta y reparación de controles para vehículo.' },
+    { t: 'Se le quebró la llave', d: 'Extracción de tacos y reparación de la cerradura en el momento.' },
+    { t: 'Casa, oficina o caja fuerte', d: 'Aperturas, instalación de cerraduras, cambio de combinación y amaestramiento.' }
+  ];
   var thread = document.getElementById('chat-thread');
   var chips = document.querySelectorAll('#chat-chips .chip');
+  if (!thread || !chips.length) return;
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       var r = replies[Number(chip.dataset.i)];
@@ -10,8 +17,33 @@
       thread.innerHTML =
         '<div class="bubble bubble--me">' + r.t + '</div>' +
         '<div class="bubble bubble--them">' + r.d + '</div>' +
-        '<div class="bubble bubble--them bubble--cta">Si quiere, llámenos al <a href="tel:+50672907799">7290-7799</a> y coordinamos ya.</div>';
+        '<div class="bubble bubble--them bubble--cta">Si quiere, llámeme al <a href="tel:+50672907799">7290-7799</a> y salgo ya.</div>';
     });
+  });
+})();
+
+// Foco de luz del hero que sigue al puntero. Solo PC con hover real y sin
+// reduced-motion: en teléfono ni se registra el listener. El gradiente vive
+// en CSS; JS solo escribe dos custom properties, una vez por frame.
+(function () {
+  var media = window.matchMedia('(min-width: 1024px) and (hover: hover) and (prefers-reduced-motion: no-preference)');
+  var hero = document.getElementById('hero');
+  if (!hero || !media.matches) return;
+  var raf = 0, x = 0, y = 0;
+  function pintar() {
+    raf = 0;
+    hero.style.setProperty('--mx', x.toFixed(1) + '%');
+    hero.style.setProperty('--my', y.toFixed(1) + '%');
+  }
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    x = ((e.clientX - r.left) / r.width) * 100;
+    y = ((e.clientY - r.top) / r.height) * 100;
+    if (!raf) raf = requestAnimationFrame(pintar);
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () {
+    x = 50; y = 40;
+    if (!raf) raf = requestAnimationFrame(pintar);
   });
 })();
 
