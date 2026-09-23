@@ -176,7 +176,7 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
 .grid--reviews{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 /* catálogo: 4 categorías grandes, el detalle abre en un <dialog> */
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.cat{display:grid;grid-template-rows:auto auto auto auto;gap:18px;text-align:left;font:inherit;color:var(--ink);background:#fff;border:1px solid rgba(18,17,16,.08);border-radius:24px;padding:26px 24px 20px;cursor:pointer;box-shadow:0 14px 30px -24px rgba(18,17,16,.4);transition:transform var(--dur-micro) var(--ease-button),box-shadow var(--dur-micro),border-color var(--dur-micro)}
+.cat{display:grid;gap:16px;text-align:left;font:inherit;color:var(--ink);background:#fff;border:1px solid rgba(18,17,16,.08);border-radius:24px;padding:26px 24px 20px;cursor:pointer;box-shadow:0 14px 30px -24px rgba(18,17,16,.4);transition:transform var(--dur-micro) var(--ease-button),box-shadow var(--dur-micro),border-color var(--dur-micro)}
 .cat:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 22px 40px -24px rgba(18,17,16,.5)}
 .cat__ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:var(--ink);color:var(--gold-2)}
 .cat__ico svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -188,16 +188,17 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
 .cat__go{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px;color:var(--ink)}
 .cat__go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--dur-micro)}
 .cat:hover .cat__go svg{transform:translateX(4px)}
-/* detalle al pasar el cursor (o foco / toque): la lista se despliega dentro de la tarjeta */
-.cat__list{list-style:none;margin:0;padding:0;display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows var(--dur-drawer) var(--ease-enter),margin var(--dur-drawer)}
-.cat__list>li:first-child{margin-top:0}
-.cat__list li{min-height:0;font-size:16px;font-weight:600;display:flex;gap:10px;align-items:flex-start;opacity:0;transition:opacity var(--dur-drawer)}
-.cat__list li::before{content:'';flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:8px}
-.cat:hover .cat__list,.cat:focus-within .cat__list,.cat.is-open .cat__list{grid-template-rows:1fr;margin-top:-4px}
-.cat:hover .cat__list li,.cat:focus-within .cat__list li,.cat.is-open .cat__list li{opacity:1;padding:5px 0}
+/* detalle al pasar el cursor (o foco / toque): la lista se despliega dentro de la tarjeta.
+   Un solo hijo en la fila 0fr -> 1fr; la <ul> con min-height:0 es lo que permite colapsar a cero. */
+.cat__list{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-drawer) var(--ease-enter)}
+.cat__list>ul{list-style:none;margin:0;padding:0;min-height:0;overflow:hidden;display:grid;gap:6px;opacity:0;transition:opacity var(--dur-drawer)}
+.cat__list li{font-size:16px;font-weight:600;display:flex;gap:10px;align-items:flex-start;line-height:1.35}
+.cat__list li::before{content:'';flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:7px}
+.cat:hover .cat__list,.cat:focus-within .cat__list,.cat.is-open .cat__list{grid-template-rows:1fr}
+.cat:hover .cat__list>ul,.cat:focus-within .cat__list>ul,.cat.is-open .cat__list>ul{opacity:1;padding-top:6px}
 .cat:hover .cat__go,.cat.is-open .cat__go{opacity:0}
-.cat__list{grid-column:1/-1}
 .cat-grid{align-items:start}
+.cat__foot{white-space:nowrap}.cat__n{font-size:12px}
 
 /* cobertura + radar */
 .coverage{display:grid;grid-template-columns:minmax(260px,380px) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
