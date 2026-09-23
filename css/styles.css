@@ -115,16 +115,16 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 .kl__key{transform-origin:400px 365px}
 .kl__shackle{transform-origin:470px 300px}
 .kl__halo{opacity:.35}
-@keyframes kl-llave{0%{transform:translate(-90px,26px) rotate(-8deg)}55%{transform:translate(0,0) rotate(0)}100%{transform:translate(0,0) rotate(90deg)}}
-@keyframes kl-arco{0%,60%{transform:translateY(0) rotate(0)}100%{transform:translateY(-44px) rotate(-16deg)}}
+@keyframes kl-llave{0%{transform:translate(-90px,26px) rotate(-8deg)}45%{transform:translate(0,0) rotate(0)}100%{transform:translate(0,0) rotate(90deg)}}
+@keyframes kl-arco{0%,55%{transform:translateY(0) rotate(0)}100%{transform:translateY(-44px) rotate(-16deg)}}
 @keyframes kl-halo{0%{opacity:.15}100%{opacity:.9}}
 @keyframes kl-spark{0%{opacity:0;transform:scale(.6)}70%{opacity:0}100%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:scroll()){
-    .kl__key{animation:kl-llave linear both;animation-timeline:scroll(root);animation-range:0 640px}
-    .kl__shackle{animation:kl-arco linear both;animation-timeline:scroll(root);animation-range:0 640px}
-    .kl__halo{animation:kl-halo linear both;animation-timeline:scroll(root);animation-range:0 640px}
-    .kl__spark{animation:kl-spark linear both;animation-timeline:scroll(root);animation-range:0 640px;transform-origin:400px 360px}
+    .kl__key{animation:kl-llave linear both;animation-timeline:scroll(root);animation-range:0 400px}
+    .kl__shackle{animation:kl-arco linear both;animation-timeline:scroll(root);animation-range:0 400px}
+    .kl__halo{animation:kl-halo linear both;animation-timeline:scroll(root);animation-range:0 400px}
+    .kl__spark{animation:kl-spark linear both;animation-timeline:scroll(root);animation-range:0 400px;transform-origin:400px 360px}
   }
 }
 
