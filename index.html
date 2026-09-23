@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20260922d">
+<link rel="stylesheet" href="css/styles.css?v=20260922e">
 </head>
 <body>
 
@@ -55,6 +55,33 @@
       </ul>
     </div>
 
+    <div class="hero__side">
+    <figure class="kl" aria-hidden="true">
+      <svg viewBox="0 0 600 520" class="kl__svg">
+        <defs>
+          <linearGradient id="klg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD65C"/><stop offset="1" stop-color="#C99A2E"/></linearGradient>
+          <radialGradient id="klh"><stop offset="0" stop-color="#F5B400" stop-opacity=".45"/><stop offset="1" stop-color="#F5B400" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle class="kl__halo" cx="400" cy="360" r="220" fill="url(#klh)"/>
+        <g class="kl__shackle">
+          <path d="M330 300 V230 a70 70 0 0 1 140 0 V300" fill="none" stroke="url(#klg)" stroke-width="26" stroke-linecap="round"/>
+        </g>
+        <g class="kl__body">
+          <rect x="300" y="290" width="200" height="170" rx="28" fill="#242220" stroke="url(#klg)" stroke-width="6"/>
+          <circle cx="400" cy="365" r="22" fill="#0F0E0C" stroke="#F5B400" stroke-width="4"/>
+          <rect x="393" y="378" width="14" height="44" rx="5" fill="#0F0E0C" stroke="#F5B400" stroke-width="4"/>
+        </g>
+        <g class="kl__key">
+          <circle cx="132" cy="365" r="46" fill="none" stroke="url(#klg)" stroke-width="18"/>
+          <path d="M178 365 H388" stroke="url(#klg)" stroke-width="20" stroke-linecap="round"/>
+          <path d="M250 375 v22 h16 v-22 M290 375 v18 h14 v-18 M328 375 v26 h18 v-26" fill="none" stroke="url(#klg)" stroke-width="10" stroke-linejoin="round"/>
+        </g>
+        <g class="kl__spark" fill="#FFD65C">
+          <circle cx="520" cy="260" r="4"/><circle cx="548" cy="330" r="3"/><circle cx="300" cy="230" r="3"/><circle cx="270" cy="470" r="4"/>
+        </g>
+      </svg>
+    </figure>
+
     <div class="chat revelar" id="chat" aria-label="Cuéntenos qué le pasó">
       <div class="chat__head">
         <span class="chat__avatar">MA</span>
@@ -69,6 +96,7 @@
         <button type="button" class="chip" data-i="3">Se le quebró la llave</button>
         <button type="button" class="chip" data-i="4">Casa, oficina o caja fuerte</button>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -302,6 +330,6 @@
   <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" class="btn btn--ghost" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
-<script src="js/main.js?v=20260922d" defer></script>
+<script src="js/main.js?v=20260922e" defer></script>
 </body>
 </html>
