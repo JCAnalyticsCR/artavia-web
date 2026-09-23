@@ -12,7 +12,7 @@ Landing one-page, solo front-end (HTML + CSS + JS sin dependencias). Mobile-firs
 GitHub Pages: Settings → Pages → Branch `main` / carpeta raíz. No requiere build.
 
 ## Pendientes por confirmar con el cliente
-- Fotos reales en alta resolución: las de `img/` vienen del Facebook público y Facebook solo expone miniaturas de 160px sin login. Pedirle los originales a Michael.
+- Más fotos de trabajos reales (ya hay 3 en img/trabajo-*.webp).
 - Mapa de cobertura y mapa de Alajuelita (embed de Google Maps)
 - Textos de reseñas de Google (solo se muestra 4.6★ / 32 opiniones)
 - Tarifas y tiempo de respuesta
