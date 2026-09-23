@@ -132,7 +132,7 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 @keyframes kl-halo{0%,70%{opacity:.1}100%{opacity:.95}}
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:scroll()){
-    .kl__svg g,.kl__halo{animation-timing-function:linear;animation-fill-mode:both;animation-timeline:scroll(root);animation-range:0 420px}
+    .kl__svg g,.kl__halo{animation-timing-function:linear;animation-fill-mode:both;animation-timeline:scroll(root);animation-range:0 280px}
     .kl__body{animation-name:kl-body}
     .kl__cyl{animation-name:kl-cyl}
     .kl__bolt--1{animation-name:kl-bolt1}.kl__bolt--2{animation-name:kl-bolt2}
