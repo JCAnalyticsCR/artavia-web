@@ -78,13 +78,13 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 
 /* header */
 .header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--night) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.header__in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.header__in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px}
 .header__actions{display:flex;align-items:center;gap:8px}
 .header__fb{gap:8px}.header__fb .btn__ico{color:#fff}
 .header__fb:hover{border-color:var(--fb);background:rgba(24,119,242,.18)}
 @media (max-width:640px){.header__fb{padding:11px 12px}.header__fb span{position:absolute;left:-9999px}}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
-.brand__logo{width:52px;height:52px;display:block;flex:0 0 auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.brand__logo{width:62px;height:62px;display:block;flex:0 0 auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
 .brand__text{display:grid;line-height:1.15}.brand__text strong{font-size:16px;letter-spacing:-.01em}
 .brand__status{font-size:12px;color:var(--fg-3);display:flex;gap:6px;align-items:center}
 .dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,.18)}
