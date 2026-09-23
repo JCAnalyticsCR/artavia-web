@@ -31,7 +31,7 @@ img{max-width:100%}
 /* grano estático solo en el hero: absoluto dentro de un contexto aislado,
    sin mix-blend-mode. Un fixed sobre todo el body con blend obligaba a
    recomponer la página entera en cada scroll (cuadros negros, renderer colgado). */
-.hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.10;
+.hero__pin::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.10;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* tipografía */
@@ -90,13 +90,14 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 .dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,.18)}
 
 /* hero */
-.hero{position:relative;overflow:hidden;padding-top:clamp(24px,4vw,48px);padding-bottom:clamp(32px,5vw,64px);isolation:isolate}
+.hero{position:relative;isolation:isolate}
+.hero__pin{position:relative;overflow:hidden;padding-top:clamp(24px,4vw,48px);padding-bottom:clamp(32px,5vw,64px);isolation:isolate}
 .hero__glow{position:absolute;inset:-20% -10%;z-index:-1;pointer-events:none;
   background:
     radial-gradient(60% 50% at var(--mx) var(--my),rgba(245,180,0,.16),transparent 60%),
     radial-gradient(40% 40% at 85% 10%,rgba(255,214,92,.10),transparent 70%),
     radial-gradient(50% 60% at 10% 90%,rgba(36,34,32,.9),transparent 70%)}
-.hero::before{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;opacity:.35;
+.hero__pin::before{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;opacity:.35;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
   mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%);-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)}
 .hero__in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:clamp(24px,4vw,56px);align-items:stretch}
@@ -292,6 +293,32 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
 .footer{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13.5px;color:var(--fg-3);padding-top:28px;padding-bottom:28px;border-top:1px solid var(--line);margin-top:24px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--night) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
 .sticky .btn{padding:15px;font-size:16px}
+
+
+/* ------------------------------------------------------------------
+   Pin del hero (solo escritorio): la vista queda fija y centrada mientras
+   la cerradura se ensambla; el montaje termina al 78% del tramo y el 22%
+   restante deja la escena quieta antes de soltar. En móvil no hay pin:
+   el contenido apilado supera la pantalla y fijarlo escondería el CTA.
+   ------------------------------------------------------------------ */
+:root{--header-h:68px;--pin:120vh}
+@media (min-width:901px){
+  .hero{height:calc(100svh + var(--pin));}
+  .hero__pin{position:sticky;top:var(--header-h);height:calc(100svh - var(--header-h));display:flex;align-items:center;padding-top:0;padding-bottom:0}
+  .hero__in{width:100%}
+  .hero__side{justify-content:center}
+  @supports (animation-timeline:scroll()){
+    .kl__svg g,.kl__halo{animation-range:0 calc(var(--pin) * .78)}
+  }
+}
+@media (min-width:901px) and (max-height:780px){
+  h1.display{font-size:clamp(34px,5vw,58px)}
+  .hero__copy h1{margin-bottom:14px}
+  .lead{margin-bottom:18px}
+  .hero__stats{display:none}
+  .kl__svg{max-width:400px}
+  .chat{padding:14px;gap:10px}
+}
 
 /* ------------------------------------------------------------------
    Reveals: CSS puro con view(). Mejora progresiva: sin soporte, nada oculto.
