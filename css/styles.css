@@ -100,7 +100,7 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 .hero__pin::before{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none;opacity:.35;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;
   mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%);-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)}
-.hero__in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+.hero__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,1.05fr);gap:clamp(16px,3vw,40px);align-items:stretch}
 .hero__side{display:flex;align-items:center;justify-content:center;min-width:0}
 .hero__copy h1{margin-bottom:22px}
 .hero__stats{list-style:none;margin:0;padding:22px 0 0;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line)}
@@ -111,7 +111,7 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 
 /* cerradura 3D (Blender) scrubbeada por el pin del hero: canvas + póster.
    El póster es f001 de la propia secuencia (se deduplica con la precarga). */
-.lock{position:relative;width:100%;max-width:600px;aspect-ratio:960/880}
+.lock{position:relative;width:118%;max-width:none;aspect-ratio:847/745;margin:-4% -14% -4% -4%}
 .lock__poster,.lock__canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .lock__poster{object-fit:contain;transition:opacity var(--dur-micro)}
 .lock__canvas{z-index:1}
@@ -272,7 +272,7 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
   .hero__copy h1{margin-bottom:12px}
   .hero .lead{font-size:16px;margin-bottom:16px}
   .hero__stats{display:none}
-  .lock{max-width:400px}
+  .lock{width:100%;margin:0}
   .btn--lg{padding:16px 22px;font-size:16px}
 }
 

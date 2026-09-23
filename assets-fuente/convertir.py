@@ -10,12 +10,23 @@ os.makedirs(dst, exist_ok=True)
 for f in glob.glob(os.path.join(dst, "f*.webp")):
     os.remove(f)
 pngs = sorted(glob.glob(os.path.join(src, "f*.png")))
+# Un solo recorte para toda la secuencia: la union de las cajas de contenido
+# de los 90 fotogramas, con margen. Asi la cerradura llena el cuadro sin que
+# el encuadre "respire" entre fotogramas.
+ims = [Image.open(p).convert("RGBA") for p in pngs]
+W, H = ims[0].size
+x0, y0, x1, y1 = W, H, 0, 0
+for im in ims:
+    bb = im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()
+    if bb:
+        x0, y0, x1, y1 = min(x0, bb[0]), min(y0, bb[1]), max(x1, bb[2]), max(y1, bb[3])
+m = 24
+box = (max(0, x0 - m), max(0, y0 - m), min(W, x1 + m), min(H, y1 + m))
 total = 0
-for i, p in enumerate(pngs, 1):
-    im = Image.open(p).convert("RGBA")
-    # recorte al contenido con margen fijo (igual para todos: el encuadre no cambia)
+for i, im in enumerate(ims, 1):
     out = os.path.join(dst, f"f{i:03d}.webp")
-    im.save(out, "WEBP", quality=q, method=6, alpha_quality=80)
+    im.crop(box).save(out, "WEBP", quality=q, method=6, alpha_quality=80)
     total += os.path.getsize(out)
 n = len(pngs)
-print(f"{n} fotogramas · {total/1024:.0f} KB total · {total/n/1024:.1f} KB promedio · {im.size[0]}x{im.size[1]}")
+cw, ch = box[2] - box[0], box[3] - box[1]
+print(f"{n} fotogramas · {total/1024:.0f} KB total · {total/n/1024:.1f} KB promedio · recorte {cw}x{ch} de {W}x{H}")
