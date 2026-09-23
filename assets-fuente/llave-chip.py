@@ -61,14 +61,15 @@ for j, (x, h) in enumerate(((0.4, .12), (0.75, .07), (1.05, .15), (1.4, .09), (1
     box(f"cut{j}", (0.14, 0.14, h), (x, 0, -0.17 + h / 2 - 0.02), M_PLASTIC, .004, 2)
 # --- chip transponder flotando sobre la cabeza ---
 chipz = 1.35
-chip = box("chip", (0.7, 0.7, 0.07), (-1.0, 0, chipz), M_CHIP, .02, 4, rot=(math.radians(-62), 0, math.radians(14)))
-# pistas doradas sobre el chip (hijas)
+# grupo sin escala: las hijas heredan solo rotacion/posicion, no el aplastado del chip
+bpy.ops.object.empty_add(location=(-1.0, 0, chipz), rotation=(math.radians(-62), 0, math.radians(14)))
+chipg = bpy.context.object; chipg.name = "chip_grp"
+chip = box("chip", (0.7, 0.7, 0.07), (0, 0, 0), M_CHIP, .02, 4); chip.parent = chipg
 # pistas y nucleo en AMBAS caras: la que mire a camara siempre las muestra
-for side in (0.05, -0.05):
+for side in (0.045, -0.045):
     for k in range(5):
-        t = box(f"trace{k}{side}", (0.5, 0.045, 0.02), (0, -0.22 + k * 0.11, side), M_TRACE, .002, 1)
-        t.parent = chip
-    core = box(f"core{side}", (0.26, 0.26, 0.05), (0, 0, side * 1.2), M_GOLD, .01, 3); core.parent = chip
+        t = box(f"trace{k}{side}", (0.5, 0.045, 0.02), (0, -0.22 + k * 0.11, side), M_TRACE, .002, 1); t.parent = chipg
+    core = box(f"core{side}", (0.26, 0.26, 0.05), (0, 0, side * 1.1), M_GOLD, .01, 3); core.parent = chipg
 # anillos de señal
 for n, r in enumerate((0.55, 0.85, 1.15)):
     bpy.ops.mesh.primitive_torus_add(major_radius=r, minor_radius=0.02, location=(-1.0, 0, chipz), rotation=(math.radians(-62), 0, math.radians(14)))
