@@ -149,11 +149,13 @@
       <p class="muted">WhatsApp: <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" target="_blank" rel="noopener">7290-7799</a> · <a href="https://facebook.com/profile.php?id=100089325142790" target="_blank" rel="noopener">Facebook</a></p>
       <div class="ph ph--wide">Mapa: Alajuelita, San José</div>
     </div>
-    <form class="form" onsubmit="return false">
-      <label>Nombre<input type="text" name="nombre" autocomplete="name"></label>
-      <label>Teléfono<input type="tel" name="telefono" autocomplete="tel"></label>
-      <label>¿Qué necesita?<textarea name="mensaje" rows="3"></textarea></label>
+    <form class="form" id="form-contacto" method="POST" action="https://formspree.io/f/REEMPLAZAR_ID" novalidate>
+      <label>Nombre<input type="text" name="nombre" autocomplete="name" required></label>
+      <label>Teléfono<input type="tel" name="telefono" autocomplete="tel" required></label>
+      <label>¿Qué necesita?<textarea name="mensaje" rows="3" required></textarea></label>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
       <button type="submit" class="btn btn--green">Enviar mensaje</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       <p class="muted small">Si es una emergencia, mejor llame: es más rápido.</p>
     </form>
   </div>

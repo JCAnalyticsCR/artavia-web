@@ -99,3 +99,9 @@ button.chip:hover,button.chip[aria-pressed=true]{background:var(--mint)}
 .sticky .btn{padding:15px;font-size:17px}
 @media (min-width:900px){.sticky{display:none}body{padding-bottom:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-status{margin:8px 0 0;font-size:.95rem;font-weight:600;min-height:1.2em}
+.form-status--ok{color:#1b7f3b}
+.form-status--error{color:#b3261e}
+.form button[disabled]{opacity:.6;cursor:progress}

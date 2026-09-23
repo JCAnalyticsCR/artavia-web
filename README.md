@@ -16,4 +16,4 @@ GitHub Pages: Settings → Pages → Branch `main` / carpeta raíz. No requiere 
 - Mapa de cobertura y mapa de Alajuelita (embed de Google Maps)
 - Textos de reseñas de Google (solo se muestra 4.6★ / 32 opiniones)
 - Tarifas y tiempo de respuesta
-- Destino del formulario de contacto (actualmente no envía)
+- Conectar Formspree: crear el formulario en formspree.io y reemplazar `REEMPLAZAR_ID` en el `action` del `<form id="form-contacto">` de `index.html`

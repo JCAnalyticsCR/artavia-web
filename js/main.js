@@ -14,3 +14,57 @@
     });
   });
 })();
+
+// Formulario de contacto: envío por Formspree sin recargar la página.
+(function () {
+  var form = document.getElementById('form-contacto');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  var button = form.querySelector('button[type="submit"]');
+  var textoOriginal = button.textContent;
+
+  function aviso(texto, tipo) {
+    status.textContent = texto;
+    status.className = 'form-status form-status--' + tipo;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      aviso('Complete nombre, teléfono y el mensaje.', 'error');
+      var primero = form.querySelector(':invalid');
+      if (primero) primero.focus();
+      return;
+    }
+    if (form.action.indexOf('REEMPLAZAR_ID') !== -1) {
+      aviso('El formulario aún no está conectado. Llámenos al 7290-7799.', 'error');
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'Enviando…';
+    aviso('', 'info');
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.reset();
+          aviso('Mensaje enviado. Le contestamos lo antes posible.', 'ok');
+        } else {
+          aviso('No se pudo enviar. Escríbanos por WhatsApp al 7290-7799.', 'error');
+        }
+      })
+      .catch(function () {
+        aviso('No se pudo enviar. Escríbanos por WhatsApp al 7290-7799.', 'error');
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = textoOriginal;
+      });
+  });
+})();
