@@ -269,7 +269,11 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
   /* la escena manda: anclada a la altura del viewport, hasta el borde derecho */
   .hero__copy{position:relative;z-index:2}
   .hero__side{position:relative;z-index:1;min-height:60vh}
-  .lock{position:absolute;top:50%;right:clamp(-280px,-13vw,-40px);transform:translateY(-50%);height:min(80vh,780px);width:auto;max-width:none}
+  /* right negativo = distancia exacta del borde de la columna al borde del viewport (menos 12px de aire):
+     la cerradura llega hasta el borde de la pantalla sin que se recorte. */
+  .lock{position:absolute;top:50%;right:calc(-1 * (max(0px,(100vw - 1120px) / 2) + clamp(16px,4vw,32px)) + 12px);transform:translateY(-50%);height:min(86vh,840px);width:auto;max-width:none}
+  /* legibilidad del texto si una pieza del despiece pasa por detrás */
+  .hero__copy::before{content:'';position:absolute;inset:-12% -8% -12% -30%;z-index:-1;background:radial-gradient(70% 60% at 30% 50%,rgba(15,14,12,.85),transparent 70%);pointer-events:none}
   .hero .lead{font-size:20px}
 }
 @media (min-width:901px) and (max-height:780px){
@@ -277,7 +281,7 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
   .hero__copy h1{margin-bottom:12px}
   .hero .lead{font-size:16px;margin-bottom:16px}
   .hero__stats{display:none}
-  .lock{height:min(70vh,560px)}
+  .lock{height:min(80vh,640px)}
   .btn--lg{padding:16px 22px;font-size:16px}
 }
 
