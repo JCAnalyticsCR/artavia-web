@@ -106,19 +106,10 @@
   });
 })();
 
-// Catálogo: cada categoría abre su <dialog> (top layer, cierra con Esc o
-// tocando fuera). Pantalla de decisión: solo se mueve lo que el usuario toca.
+// Catálogo: en pantallas táctiles (sin hover) un toque despliega la lista.
 (function () {
-  var botones = document.querySelectorAll('[data-dialog]');
-  if (!botones.length || !('HTMLDialogElement' in window)) return;
-  botones.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var d = document.getElementById(b.dataset.dialog);
-      if (d) d.showModal();
-    });
-  });
-  document.querySelectorAll('dialog.dlg').forEach(function (d) {
-    d.querySelector('[data-close]').addEventListener('click', function () { d.close(); });
-    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  if (window.matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('.cat').forEach(function (c) {
+    c.addEventListener('click', function () { c.classList.toggle('is-open'); });
   });
 })();

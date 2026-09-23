@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20260923a">
+<link rel="stylesheet" href="css/styles.css?v=20260923b">
 </head>
 <body>
 
@@ -138,35 +138,12 @@
       <h2 class="display">Todos nuestros servicios</h2>
     </header>
     <div class="cat-grid">
-      <button type="button" class="cat revelar" data-dialog="dlg-auto">
+      <div class="cat revelar" tabindex="0" data-cat="auto">
         <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l1.6-4.5A2 2 0 0 1 8.5 7h7a2 2 0 0 1 1.9 1.4L19 13"/><path d="M4 13h16v5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-9v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><circle cx="7.5" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/></svg></span>
         <span class="cat__body"><strong>Cerrajería automotriz</strong><span>Aperturas, llaves con chip y controles: todo lo del carro, en sitio.</span></span>
-        <span class="cat__foot"><span class="cat__n">7 servicios</span><span class="cat__go">Ver detalles<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-      </button>
-      <button type="button" class="cat revelar" data-dialog="dlg-aperturas">
-        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><circle cx="14.5" cy="12.5" r="1"/></svg></span>
-        <span class="cat__body"><strong>Aperturas</strong><span>Si se quedó afuera, entramos sin romper nada.</span></span>
-        <span class="cat__foot"><span class="cat__n">5 servicios</span><span class="cat__go">Ver detalles<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-      </button>
-      <button type="button" class="cat revelar" data-dialog="dlg-cerraduras">
-        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3"/></svg></span>
-        <span class="cat__body"><strong>Cerraduras: venta e instalación</strong><span>Cerradura nueva, instalada y probada el mismo día.</span></span>
-        <span class="cat__foot"><span class="cat__n">6 servicios</span><span class="cat__go">Ver detalles<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-      </button>
-      <button type="button" class="cat revelar" data-dialog="dlg-especiales">
-        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="8" r="3.5"/><path d="M9.5 10.5L20 21"/><path d="M14 15l2-2M17 18l2-2"/><circle cx="17" cy="7" r="2.5"/></svg></span>
-        <span class="cat__body"><strong>Servicios especializados</strong><span>Llave maestra, combinaciones y copias sin muestra.</span></span>
-        <span class="cat__foot"><span class="cat__n">3 servicios</span><span class="cat__go">Ver detalles<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-      </button>
-    </div>
-    <dialog class="dlg" id="dlg-auto" aria-labelledby="dlg-auto-t">
-      <div class="dlg__in">
-        <button type="button" class="dlg__close" data-close aria-label="Cerrar">×</button>
-        <span class="cat__ico dlg__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l1.6-4.5A2 2 0 0 1 8.5 7h7a2 2 0 0 1 1.9 1.4L19 13"/><path d="M4 13h16v5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-9v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><circle cx="7.5" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/></svg></span>
-        <h3 id="dlg-auto-t">Cerrajería automotriz</h3>
-        <p class="dlg__lead">Aperturas, llaves con chip y controles: todo lo del carro, en sitio.</p>
-        <ul class="dlg__list">
-          <li>Apertura de vehículos sin dañar la cerradura</li>
+        <span class="cat__foot"><span class="cat__n">7 servicios</span><span class="cat__go">Pase el cursor<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <ul class="cat__list">
+<li>Apertura de vehículos sin dañar la cerradura</li>
           <li>Confección de llaves desde cero (sin necesidad de muestra)</li>
           <li>Duplicado de llaves de carro</li>
           <li>Llaves con chip / transponder</li>
@@ -174,68 +151,43 @@
           <li>Venta y reparación de controles para vehículo</li>
           <li>Extracción de tacos de llave</li>
         </ul>
-        <div class="dlg__cta">
-          <a href="tel:+50672907799" class="btn btn--gold">Llamar al 7290-7799</a>
-          <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20Cerrajería%20automotriz" class="btn btn--ghost dlg__wa" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
       </div>
-    </dialog>
-    <dialog class="dlg" id="dlg-aperturas" aria-labelledby="dlg-aperturas-t">
-      <div class="dlg__in">
-        <button type="button" class="dlg__close" data-close aria-label="Cerrar">×</button>
-        <span class="cat__ico dlg__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><circle cx="14.5" cy="12.5" r="1"/></svg></span>
-        <h3 id="dlg-aperturas-t">Aperturas</h3>
-        <p class="dlg__lead">Si se quedó afuera, entramos sin romper nada.</p>
-        <ul class="dlg__list">
-          <li>Vehículos</li>
+      <div class="cat revelar" tabindex="0" data-cat="aperturas">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><circle cx="14.5" cy="12.5" r="1"/></svg></span>
+        <span class="cat__body"><strong>Aperturas</strong><span>Si se quedó afuera, entramos sin romper nada.</span></span>
+        <span class="cat__foot"><span class="cat__n">5 servicios</span><span class="cat__go">Pase el cursor<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <ul class="cat__list">
+<li>Vehículos</li>
           <li>Casas y apartamentos</li>
           <li>Oficinas y locales comerciales</li>
           <li>Cajas fuertes</li>
           <li>Todo tipo de cerradura</li>
         </ul>
-        <div class="dlg__cta">
-          <a href="tel:+50672907799" class="btn btn--gold">Llamar al 7290-7799</a>
-          <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20Aperturas" class="btn btn--ghost dlg__wa" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
       </div>
-    </dialog>
-    <dialog class="dlg" id="dlg-cerraduras" aria-labelledby="dlg-cerraduras-t">
-      <div class="dlg__in">
-        <button type="button" class="dlg__close" data-close aria-label="Cerrar">×</button>
-        <span class="cat__ico dlg__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3"/></svg></span>
-        <h3 id="dlg-cerraduras-t">Cerraduras: venta e instalación</h3>
-        <p class="dlg__lead">Cerradura nueva, instalada y probada el mismo día.</p>
-        <ul class="dlg__list">
-          <li>Vehículos</li>
+      <div class="cat revelar" tabindex="0" data-cat="cerraduras">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3"/></svg></span>
+        <span class="cat__body"><strong>Cerraduras: venta e instalación</strong><span>Cerradura nueva, instalada y probada el mismo día.</span></span>
+        <span class="cat__foot"><span class="cat__n">6 servicios</span><span class="cat__go">Pase el cursor<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <ul class="cat__list">
+<li>Vehículos</li>
           <li>Casas y residencias</li>
           <li>Oficinas</li>
           <li>Cajas fuertes</li>
           <li>Muebles de oficina</li>
           <li>Puertas de cristal</li>
         </ul>
-        <div class="dlg__cta">
-          <a href="tel:+50672907799" class="btn btn--gold">Llamar al 7290-7799</a>
-          <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20Cerraduras:%20venta%20e%20instalación" class="btn btn--ghost dlg__wa" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
       </div>
-    </dialog>
-    <dialog class="dlg" id="dlg-especiales" aria-labelledby="dlg-especiales-t">
-      <div class="dlg__in">
-        <button type="button" class="dlg__close" data-close aria-label="Cerrar">×</button>
-        <span class="cat__ico dlg__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="8" r="3.5"/><path d="M9.5 10.5L20 21"/><path d="M14 15l2-2M17 18l2-2"/><circle cx="17" cy="7" r="2.5"/></svg></span>
-        <h3 id="dlg-especiales-t">Servicios especializados</h3>
-        <p class="dlg__lead">Llave maestra, combinaciones y copias sin muestra.</p>
-        <ul class="dlg__list">
-          <li>Cambio de combinación de cerraduras</li>
+      <div class="cat revelar" tabindex="0" data-cat="especiales">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="8" r="3.5"/><path d="M9.5 10.5L20 21"/><path d="M14 15l2-2M17 18l2-2"/><circle cx="17" cy="7" r="2.5"/></svg></span>
+        <span class="cat__body"><strong>Servicios especializados</strong><span>Llave maestra, combinaciones y copias sin muestra.</span></span>
+        <span class="cat__foot"><span class="cat__n">3 servicios</span><span class="cat__go">Pase el cursor<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <ul class="cat__list">
+<li>Cambio de combinación de cerraduras</li>
           <li>Amaestramiento de cerraduras (sistema de llave maestra)</li>
           <li>Copias de llaves con o sin muestra</li>
         </ul>
-        <div class="dlg__cta">
-          <a href="tel:+50672907799" class="btn btn--gold">Llamar al 7290-7799</a>
-          <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20Servicios%20especializados" class="btn btn--ghost dlg__wa" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
       </div>
-    </dialog>
+    </div>
   </div>
   </div>
 </section>
@@ -393,7 +345,7 @@
   <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" class="btn btn--ghost" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
-<script src="js/main.js?v=20260923a" defer></script>
-<script src="js/scrub.js?v=20260923a" defer></script>
+<script src="js/main.js?v=20260923b" defer></script>
+<script src="js/scrub.js?v=20260923b" defer></script>
 </body>
 </html>
