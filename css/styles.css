@@ -108,23 +108,39 @@ h1 em{font-style:normal;color:var(--gold);background:linear-gradient(90deg,var(-
 .hero__stats strong{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--gold-2)}
 .hero__stats span{font-size:13px;color:var(--fg-3)}
 
-/* llave y cerrojo: escena de fondo animada por scroll (CSS puro, compositor) */
+/* despiece de cerradura: arranca desarmada y se ensambla con el scroll.
+   CSS puro (animation-timeline: scroll), solo transform/opacity -> compositor.
+   Cada pieza tiene su propio tramo para que se lea como montaje. */
 .kl{margin:0;flex:1 1 auto;display:grid;place-items:center;min-height:200px}
 .kl__svg{width:100%;max-width:520px;height:auto;display:block;overflow:visible}
-.kl__key,.kl__shackle,.kl__halo,.kl__spark{transform-box:view-box}
-.kl__key{transform-origin:400px 365px}
-.kl__shackle{transform-origin:470px 300px}
-.kl__halo{opacity:.35}
-@keyframes kl-llave{0%{transform:translate(-90px,26px) rotate(-8deg)}45%{transform:translate(0,0) rotate(0)}100%{transform:translate(0,0) rotate(90deg)}}
-@keyframes kl-arco{0%,55%{transform:translateY(0) rotate(0)}100%{transform:translateY(-44px) rotate(-16deg)}}
-@keyframes kl-halo{0%{opacity:.15}100%{opacity:.9}}
-@keyframes kl-spark{0%{opacity:0;transform:scale(.6)}70%{opacity:0}100%{opacity:1;transform:scale(1)}}
+.kl__svg g,.kl__halo{transform-box:fill-box;transform-origin:center}
+.kl__brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;fill:#121110}
+.kl__lbl text{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:11px;letter-spacing:2.5px}
+/* estado de reposo (sin soporte / reduced-motion): ensamblada, sin plano */
+.kl__ghost,.kl__lbl{opacity:0}.kl__halo{opacity:.35}
+@keyframes kl-body{0%{transform:translate(-14px,22px) rotate(-3deg);opacity:.75}60%,100%{transform:none;opacity:1}}
+@keyframes kl-cyl{0%,25%{transform:translate(-130px,-110px) rotate(-30deg)}88%,100%{transform:none}}
+@keyframes kl-bolt1{0%,15%{transform:translate(120px,-70px) rotate(8deg)}80%,100%{transform:none}}
+@keyframes kl-bolt2{0%,20%{transform:translate(140px,60px) rotate(-6deg)}85%,100%{transform:none}}
+@keyframes kl-keeper{0%,10%{transform:translate(100px,-30px) rotate(14deg)}75%,100%{transform:none}}
+@keyframes kl-s1{0%,45%{transform:translate(-70px,-80px)}100%{transform:none}}
+@keyframes kl-s2{0%,50%{transform:translate(70px,-90px)}100%{transform:none}}
+@keyframes kl-s3{0%,55%{transform:translate(-80px,80px)}100%{transform:none}}
+@keyframes kl-s4{0%,48%{transform:translate(80px,90px)}100%{transform:none}}
+@keyframes kl-key{0%,55%{transform:translate(-90px,120px) rotate(-35deg)}100%{transform:none}}
+@keyframes kl-plano{0%,40%{opacity:1}90%,100%{opacity:0}}
+@keyframes kl-halo{0%,70%{opacity:.1}100%{opacity:.95}}
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:scroll()){
-    .kl__key{animation:kl-llave linear both;animation-timeline:scroll(root);animation-range:0 400px}
-    .kl__shackle{animation:kl-arco linear both;animation-timeline:scroll(root);animation-range:0 400px}
-    .kl__halo{animation:kl-halo linear both;animation-timeline:scroll(root);animation-range:0 400px}
-    .kl__spark{animation:kl-spark linear both;animation-timeline:scroll(root);animation-range:0 400px;transform-origin:400px 360px}
+    .kl__svg g,.kl__halo{animation-timing-function:linear;animation-fill-mode:both;animation-timeline:scroll(root);animation-range:0 420px}
+    .kl__body{animation-name:kl-body}
+    .kl__cyl{animation-name:kl-cyl}
+    .kl__bolt--1{animation-name:kl-bolt1}.kl__bolt--2{animation-name:kl-bolt2}
+    .kl__keeper{animation-name:kl-keeper}
+    .kl__screw--1{animation-name:kl-s1}.kl__screw--2{animation-name:kl-s2}.kl__screw--3{animation-name:kl-s3}.kl__screw--4{animation-name:kl-s4}
+    .kl__key{animation-name:kl-key}
+    .kl__ghost,.kl__lbl{animation-name:kl-plano}
+    .kl__halo{animation-name:kl-halo}
   }
 }
 
