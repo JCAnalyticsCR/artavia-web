@@ -105,3 +105,8 @@ button.chip:hover,button.chip[aria-pressed=true]{background:var(--mint)}
 .form-status--ok{color:#1b7f3b}
 .form-status--error{color:#b3261e}
 .form button[disabled]{opacity:.6;cursor:progress}
+
+.btn--fb{background:#1877F2;color:#fff;gap:10px}
+.btn--fb:hover{background:#0E5FC8;color:#fff}
+.btn__ico{width:22px;height:22px;flex:0 0 auto}
+.gallery__cta{margin:20px 0 0;text-align:center}
