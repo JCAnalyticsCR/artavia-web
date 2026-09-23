@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20260922o">
+<link rel="stylesheet" href="css/styles.css?v=20260922p">
 </head>
 <body>
 
@@ -58,68 +58,11 @@
     </div>
 
     <div class="hero__side">
-    <figure class="kl" aria-hidden="true">
-      <svg viewBox="0 0 600 520" class="kl__svg">
-        <defs>
-          <linearGradient id="klg" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="400"><stop offset="0" stop-color="#FFD65C"/><stop offset="1" stop-color="#C99A2E"/></linearGradient>
-          <linearGradient id="klm" gradientUnits="userSpaceOnUse" x1="0" y1="200" x2="0" y2="340"><stop offset="0" stop-color="#F1EDE3"/><stop offset=".5" stop-color="#B9B3A6"/><stop offset="1" stop-color="#E4DFD3"/></linearGradient>
-          <radialGradient id="klh"><stop offset="0" stop-color="#F5B400" stop-opacity=".5"/><stop offset="1" stop-color="#F5B400" stop-opacity="0"/></radialGradient>
-        </defs>
-
-        <!-- halo: se enciende cuando encaja -->
-        <circle class="kl__halo" cx="300" cy="270" r="230" fill="url(#klh)"/>
-
-        <!-- silueta fantasma del ensamble (plano) -->
-        <g class="kl__ghost" fill="none" stroke="#F5B400" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="5 6">
-          <rect x="150" y="170" width="230" height="200" rx="18"/>
-          <circle cx="215" cy="270" r="40"/>
-          <rect x="378" y="228" width="66" height="30" rx="15"/><rect x="378" y="296" width="66" height="30" rx="15"/>
-          <rect x="456" y="195" width="62" height="150" rx="14"/>
-          <path d="M215 100 V170"/><path d="M487 120 V195"/><path d="M411 330 V378"/><path d="M96 300 V414"/><path d="M265 372 V436"/>
-        </g>
-        <!-- etiquetas de plano -->
-        <g class="kl__lbl" fill="#D6D2C8">
-          <text x="215" y="92" text-anchor="middle">CILINDRO</text>
-          <text x="487" y="112" text-anchor="middle">CERRADERO</text>
-          <text x="411" y="394" text-anchor="middle">PASADORES</text>
-          <text x="96" y="430" text-anchor="middle">LLAVE</text>
-          <text x="265" y="452" text-anchor="middle">CUERPO</text>
-        </g>
-
-        <!-- cuerpo -->
-        <g class="kl__body">
-          <rect x="150" y="170" width="230" height="200" rx="18" fill="#242220" stroke="url(#klg)" stroke-width="6"/>
-          <rect x="168" y="188" width="194" height="164" rx="12" fill="none" stroke="#F5B400" stroke-opacity=".25" stroke-width="2"/>
-          <rect x="300" y="205" width="52" height="34" rx="7" fill="#F5B400"/>
-          <text x="326" y="228" text-anchor="middle" class="kl__brand">24h</text>
-        </g>
-        <!-- pasadores -->
-        <g class="kl__bolt kl__bolt--1"><rect x="378" y="228" width="66" height="30" rx="15" fill="url(#klm)"/><rect x="378" y="228" width="12" height="30" rx="6" fill="#8E877A"/></g>
-        <g class="kl__bolt kl__bolt--2"><rect x="378" y="296" width="66" height="30" rx="15" fill="url(#klm)"/><rect x="378" y="296" width="12" height="30" rx="6" fill="#8E877A"/></g>
-        <!-- cerradero -->
-        <g class="kl__keeper">
-          <rect x="456" y="195" width="62" height="150" rx="14" fill="#242220" stroke="url(#klg)" stroke-width="6"/>
-          <rect x="470" y="226" width="34" height="34" rx="8" fill="#0F0E0C"/><rect x="470" y="288" width="34" height="34" rx="8" fill="#0F0E0C"/>
-        </g>
-        <!-- cilindro -->
-        <g class="kl__cyl">
-          <circle cx="215" cy="270" r="40" fill="url(#klm)"/>
-          <circle cx="215" cy="270" r="24" fill="#242220" stroke="#F5B400" stroke-width="3"/>
-          <rect x="211" y="262" width="8" height="26" rx="3" fill="#F5B400"/>
-        </g>
-        <!-- tornillos -->
-        <g class="kl__screw kl__screw--1"><circle cx="172" cy="192" r="8" fill="url(#klm)"/><path d="M167 192h10M172 187v10" stroke="#5E584D" stroke-width="2"/></g>
-        <g class="kl__screw kl__screw--2"><circle cx="358" cy="192" r="8" fill="url(#klm)"/><path d="M353 192h10M358 187v10" stroke="#5E584D" stroke-width="2"/></g>
-        <g class="kl__screw kl__screw--3"><circle cx="172" cy="348" r="8" fill="url(#klm)"/><path d="M167 348h10M172 343v10" stroke="#5E584D" stroke-width="2"/></g>
-        <g class="kl__screw kl__screw--4"><circle cx="358" cy="348" r="8" fill="url(#klm)"/><path d="M353 348h10M358 343v10" stroke="#5E584D" stroke-width="2"/></g>
-        <!-- llave -->
-        <g class="kl__key">
-          <circle cx="92" cy="270" r="26" fill="none" stroke="url(#klg)" stroke-width="12"/>
-          <path d="M118 270 H196" stroke="url(#klg)" stroke-width="12" stroke-linecap="round"/>
-          <path d="M150 276 v12 h9 v-12 M172 276 v9 h8 v-9" fill="none" stroke="url(#klg)" stroke-width="6" stroke-linejoin="round"/>
-        </g>
-      </svg>
-    </figure>
+    <div class="lock" id="lock-stage" data-frames="90" data-path="img/frames/cerradura">
+      <img class="lock__poster" src="img/frames/cerradura/f001.webp" width="960" height="880" decoding="async"
+           alt="Cerradura de sobreponer en vista de despiece: cuerpo, cilindro, pasadores, cerradero, tornillos y llave.">
+      <canvas class="lock__canvas" aria-hidden="true"></canvas>
+    </div>
 
     </div>
   </div>
@@ -355,6 +298,7 @@
   <a href="https://wa.me/50672907799?text=Hola%2C%20necesito%20un%20servicio%20de%20cerrajer%C3%ADa" class="btn btn--ghost" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
-<script src="js/main.js?v=20260922o" defer></script>
+<script src="js/main.js?v=20260922p" defer></script>
+<script src="js/scrub.js?v=20260922p" defer></script>
 </body>
 </html>
