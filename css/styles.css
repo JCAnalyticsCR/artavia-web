@@ -277,7 +277,11 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
 .form button[disabled]{opacity:.6;cursor:progress}
 
 /* footer + barra fija móvil */
-.footer{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13.5px;color:var(--fg-3);padding-top:28px;padding-bottom:28px;border-top:1px solid var(--line);margin-top:24px}
+.footer__row{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.credit{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);width:100%;justify-content:center;text-decoration:none;color:var(--fg-3);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.credit img{height:30px;width:auto;opacity:.9;transition:opacity var(--dur-micro)}
+.credit:hover img{opacity:1}
+.footer{display:grid;font-size:13.5px;color:var(--fg-3);padding-top:28px;padding-bottom:28px;border-top:1px solid var(--line);margin-top:24px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--night) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
 .sticky .btn{padding:15px;font-size:16px}
 
