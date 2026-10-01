@@ -70,17 +70,23 @@ Se sube como **historia**, con el sticker de enlace a WhatsApp (`wa.me/506729077
 
 ---
 
-## Calendario sugerido (2 semanas, 3 por semana)
+## Calendario programado — todos los días a las 11:00 a. m.
 
-| Día | Pieza | Por qué |
+Prioridad: las fotos de trabajos reales (Toyota, cilindros, Geely) van en los días de más movimiento.
+
+| Día | Pieza | Tipo |
 |---|---|---|
-| Semana 1 · lun | 10 Lanzamiento web | Anclar la web antes que todo |
-| Semana 1 · mié | 03 Toyota | Trabajo real: es lo que más alcance tiene (el reel de la llave lleva 31 mil vistas) |
-| Semana 1 · vie | 08 Consejo | Educativo = se comparte |
-| Semana 2 · lun | 06 ¿Se quedó afuera? | Servicio estrella |
-| Semana 2 · mié | 04 Cilindros | Trabajo real |
-| Semana 2 · vie | 09 Cobertura | Responde la pregunta "¿llegan hasta acá?" |
-| Cualquier día | 11 Historia | Repetir 1 vez por semana |
+| Jue 1 oct | 10 Lanzamiento de la web | Ancla: la web primero |
+| Vie 2 oct | 03 Trabajo real · Toyota | **Foto real** |
+| Sáb 3 oct | 06 ¿Se quedó afuera? | Servicio |
+| Dom 4 oct | 04 Trabajo real · Cilindros | **Foto real** |
+| Lun 5 oct | 08 Consejo · 3 señales | Para compartir |
+| Mar 6 oct | 05 Trabajo real · Geely | **Foto real** |
+| Mié 7 oct | 07 ¿Perdió la llave del carro? | Servicio |
+
+Cada publicación sale también como historia (opción por defecto de Business Suite).
+Las piezas 09 (cobertura) y 11 (historia de WhatsApp) quedan de reserva para la semana siguiente,
+junto con las fotos nuevas que mande Michael.
 
 ## Regla de oro para lo que venga
 1. **Foto o video real de un trabajo** > cualquier afiche. Michael: grabe 10–15 s de cada trabajo con el celular vertical.

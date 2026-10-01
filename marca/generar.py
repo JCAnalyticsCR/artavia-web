@@ -44,15 +44,18 @@ html,body{width:var(--w);height:var(--h);overflow:hidden;background:var(--night)
 .marca{display:flex;align-items:center;gap:.5em}
 .marca svg{width:1.9em;height:1.9em;flex:0 0 auto}
 .marca b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1}
-.marca small{display:block;font-size:.5em;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-top:.25em}
+.marca small{display:block;font-size:.46em;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-top:.25em}
 .tag{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:999px;padding:.45em 1em}
 .barra{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
   background:var(--gold);color:var(--ink);font-weight:800}
 .barra .tel{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
 """
 
+LOGO = (SITIO / "img" / "logo.png").resolve().as_uri()   # logo original de Michael (llaves en círculo)
+
 def marca_html(tam_px, sub="Cerrajería 24 h"):
-    return f'<div class="marca" style="font-size:{tam_px}px">{SIMBOLO}<span><b>Artavia</b><small>{sub}</small></span></div>'
+    return (f'<div class="marca" style="font-size:{tam_px}px"><img src="{LOGO}" style="width:2.4em;height:2.4em;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))">'
+            f'<span><b>Cerrajería Artavia</b><small>{sub}</small></span></div>')
 
 def pagina(nombre, w, h, cuerpo, extra_css=""):
     html = f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
@@ -127,7 +130,7 @@ pagina("06-servicio-afuera", 1080, 1350, f"""
 pagina("07-servicio-chip", 1080, 1350, f"""
 <div style="position:absolute;inset:0;background:linear-gradient(150deg,#FFD65C,#F5B400 55%,#E3A600)"></div>
 <div style="position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 10%,rgba(255,255,255,.35),transparent 60%)"></div>
-<div style="position:absolute;left:64px;top:56px;color:var(--ink)"><div class="marca" style="font-size:30px">{SIMBOLO.replace('fill="#121110"','fill="#F5B400"').replace('url(#g)','#121110').replace('stroke="#121110"','stroke="#F5B400"')}<span><b>Artavia</b><small style="color:#121110;opacity:.7">Cerrajería 24 h</small></span></div></div>
+<div style="position:absolute;left:64px;top:56px;color:var(--ink)">{marca_html(30).replace("<small>","<small style=\"color:#121110;opacity:.7\">")}</div>
 <img src="{CHIP}" style="position:absolute;left:50%;top:190px;transform:translateX(-50%);width:960px">
 <div style="position:absolute;left:64px;right:64px;bottom:190px;color:var(--ink)">
   <h1 class="d" style="font-size:104px">¿Perdió la llave<br>del carro?</h1>
