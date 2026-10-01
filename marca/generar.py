@@ -211,4 +211,28 @@ pagina("11-historia-whatsapp", 1080, 1920, f"""
   {TEL}</div>
 <div class="grain"></div>""")
 
+# ---------------------------------------------------------------- 12-15. trabajo real con fotos horizontales de la página
+# La foto va arriba a lo ancho (no se estira a vertical: son fotos chicas) y se funde al fondo.
+def u_real(n): return (RAIZ / "fotos-reales" / f"{n}-hd.jpg").resolve().as_uri()
+HORIZ = [
+ ("12-trabajo-ganzua", "ganzua", "Casas", "Le abrimos la casa<br><span class='gold'>sin romper nada.</span>", "Apertura de cilindro con ganzúa, sin dañar la cerradura"),
+ ("13-trabajo-cuna-aire", "cuna-aire", "Automotriz", "Abrimos su carro<br><span class='gold'>sin un rayón.</span>", "Cuña de aire y varilla: la puerta queda como estaba"),
+ ("14-trabajo-llave-quebrada", "llave-quebrada", "Automotriz", "¿Se le quebró<br><span class='gold'>la llave?</span>", "Sacamos el pedazo y le hacemos la llave nueva ahí mismo"),
+ ("15-trabajo-maquina", "maquina-llaves", "Duplicados", "Copias de llaves<br><span class='gold'>al momento.</span>", "Con o sin muestra, sencillas y de alto relieve"),
+]
+for nombre, foto, tag, titulo, pie in HORIZ:
+    pagina(nombre, 1080, 1350, f"""
+<div class="grid"></div>
+<img src="{u_real(foto)}" style="position:absolute;left:0;top:0;width:1080px;height:760px;object-fit:cover">
+<div style="position:absolute;left:0;right:0;top:0;height:760px;background:linear-gradient(180deg,rgba(15,14,12,.55) 0%,rgba(15,14,12,0) 20%,rgba(15,14,12,0) 62%,#0F0E0C 100%)"></div>
+<div style="position:absolute;left:64px;top:56px">{marca_html(30)}</div>
+<div style="position:absolute;right:64px;top:64px;font-size:20px;font-weight:800;letter-spacing:.2em;color:#fff;opacity:.85">TRABAJO REAL</div>
+<div style="position:absolute;left:64px;right:64px;bottom:190px">
+  <span class="tag" style="font-size:20px">{tag}</span>
+  <h1 class="d" style="font-size:96px;margin-top:24px">{titulo}</h1>
+  <p style="font-size:30px;color:var(--fg2);margin-top:18px;font-weight:600">{pie}</p>
+</div>
+<div class="barra" style="height:120px;padding:0 64px;font-size:28px"><span class="tel" style="font-size:52px">{TEL}</span><span>{WEB}</span></div>
+<div class="grain"></div>""")
+
 print("listo ->", OUT)

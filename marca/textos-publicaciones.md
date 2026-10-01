@@ -72,16 +72,21 @@ Se sube como **historia**, con el sticker de enlace a WhatsApp (`wa.me/506729077
 
 ## Calendario programado (orgánico, sin pauta) — 11:00 a. m.
 
-Solo piezas con fotos reales de Michael. Las de render 3D no se publican. Cero presupuesto en anuncios.
+Solo piezas con fotos reales. Las de render 3D no se publican. Cero presupuesto: en cada programación
+Business Suite ofrece "Promocionar" y se rechaza con "Tal vez más tarde".
 
-| Día | Pieza | Estado |
-|---|---|---|
-| Jue 1 oct | 03 Trabajo real · Toyota | Programada en Business Suite |
-| Vie 2 oct | 04 Trabajo real · Cilindros | Programada en Business Suite |
-| Sáb 3 oct | 05 Trabajo real · Geely | Programada en Business Suite |
-| Dom 4 → Mié 7 | — | Pendiente: hacen falta fotos nuevas de trabajos |
+| Día | Pieza | Foto | Estado |
+|---|---|---|---|
+| Jue 1 oct | 03 Llave con chip | Toyota (carpeta) | Programada |
+| Vie 2 oct | 04 Cilindros nuevos | Cilindros (carpeta) | Programada |
+| Sáb 3 oct | 05 Control reparado | Geely (carpeta) | Programada |
+| Dom 4 oct | 12 Le abrimos la casa | Ganzúa (página de FB) | Programada |
+| Lun 5 oct | 13 Abrimos su carro sin un rayón | Cuña de aire (página de FB) | Programada |
+| Mar 6 oct | 14 ¿Se le quebró la llave? | Llave quebrada (página de FB) | Programada |
+| Mié 7 oct | 15 Copias de llaves al momento | Máquina (página de FB) | Programada |
 
-Cada pieza nueva se arma con `marca/generar.py` (plantilla "Trabajo real") a partir de la foto que mande Michael.
+Las fotos de la página son chicas (560–980 px): usan la plantilla horizontal (foto arriba, se funde al fondo).
+Originales en `marca/fotos-reales/`.
 
 ## Regla de oro para lo que venga
 1. **Foto o video real de un trabajo** > cualquier afiche. Michael: grabe 10–15 s de cada trabajo con el celular vertical.
