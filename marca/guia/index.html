@@ -1,0 +1,197 @@
+<title>Identidad Artavia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap">
+<style>
+/* Layout: una columna editorial; el oro solo marca lo accionable. Look único nocturno, deliberado. */
+:root{
+  --noche:#0F0E0C; --noche-2:#181715; --noche-3:#242220;
+  --oro:#F5B400; --oro-claro:#FFD65C; --laton:#C99A2E;
+  --texto:#F3F0E8; --texto-2:#D6D2C8; --texto-3:#9A958B; --linea:rgba(255,255,255,.09);
+  --alerta:#F28B6B; --ok:#7DDCA0;
+  --f-display:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;
+  --f-texto:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--noche);color:var(--texto);font-family:var(--f-texto);font-size:16px;line-height:1.6;margin:0}
+.envoltura{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:clamp(28px,5vw,64px) 80px}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;line-height:1;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,40px);margin-bottom:6px}
+h3{font-size:20px;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--oro-claro)}
+.etiqueta{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--oro-claro)}
+.sub{color:var(--texto-2);max-width:62ch}
+section{display:grid;gap:22px;padding-block:44px;border-top:1px solid var(--linea)}
+section:first-of-type{border-top:0;padding-top:0}
+
+/* portada */
+.portada{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:center;padding-bottom:48px}
+.portada svg{width:clamp(96px,16vw,168px);height:auto}
+.portada h1{font-size:clamp(48px,9vw,104px)}
+.portada .oro{background:linear-gradient(90deg,var(--oro-claro),var(--oro) 55%,var(--laton));-webkit-background-clip:text;background-clip:text;color:transparent}
+.portada p{margin-top:14px;font-size:clamp(17px,2vw,20px)}
+
+/* diagnóstico */
+.tabla{overflow-x:auto;border:1px solid var(--linea);border-radius:16px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--linea);vertical-align:top}
+th{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-3);font-weight:700;background:var(--noche-2)}
+tr:last-child td{border-bottom:0}
+.estado{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.estado--mal{background:rgba(242,139,107,.14);color:var(--alerta)}
+.estado--bien{background:rgba(125,220,160,.12);color:var(--ok)}
+.estado--ojo{background:rgba(245,180,0,.14);color:var(--oro-claro)}
+.dato{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.dato div{background:var(--noche-2);border-radius:14px;padding:18px}
+.dato b{display:block;font-family:var(--f-display);font-size:34px;letter-spacing:-.02em;color:var(--oro-claro);font-variant-numeric:tabular-nums}
+.dato span{color:var(--texto-2);font-size:14px}
+
+/* identidad */
+.paleta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.muestra{border-radius:14px;overflow:hidden;border:1px solid var(--linea);background:var(--noche-2)}
+.muestra i{display:block;height:84px}
+.muestra div{padding:12px 14px;display:grid;gap:2px}
+.muestra b{font-size:15px}
+.muestra code{font-size:13px;color:var(--texto-3);font-family:ui-monospace,Consolas,monospace}
+.muestra button{justify-self:start;margin-top:6px;font:inherit;font-size:12px;font-weight:700;color:var(--oro-claro);background:none;border:1px solid var(--linea);border-radius:999px;padding:4px 10px;cursor:pointer}
+.muestra button:focus-visible,.copiar:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tipo{background:var(--noche-2);border-radius:14px;padding:22px;display:grid;gap:8px;min-width:0}
+.tipo .grande{font-size:44px;line-height:1;font-family:var(--f-display);font-weight:800;letter-spacing:-.03em}
+.tipo .texto{font-size:20px;font-weight:600}
+.tipo small{color:var(--texto-3)}
+.voz{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.voz div{background:var(--noche-2);border-radius:14px;padding:18px;display:grid;gap:6px}
+.voz q{font-weight:600;quotes:'“' '”'}
+.voz .no q{color:var(--texto-3);text-decoration:line-through;text-decoration-color:var(--alerta)}
+
+/* piezas */
+.piezas{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.pieza{display:grid;gap:10px;min-width:0}
+.pieza img{width:100%;height:auto;border-radius:10px;display:block;background:var(--noche-2)}
+.pieza--ancha{grid-column:1/-1}
+.pieza--ancha img{max-width:760px}
+.pieza b{font-size:15px}
+.pieza span{color:var(--texto-3);font-size:13px}
+
+/* cambios */
+.cambios{display:grid;gap:10px;counter-reset:c}
+.cambio{display:grid;grid-template-columns:auto 1fr;gap:14px;background:var(--noche-2);border-radius:14px;padding:16px 18px;align-items:start}
+.cambio::before{counter-increment:c;content:counter(c);font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--oro);width:28px}
+.cambio p{color:var(--texto-2);font-size:15px;margin-top:4px}
+.nota{border:1px dashed var(--oro);border-radius:14px;padding:16px 18px;color:var(--texto-2);font-size:15px}
+.contacto{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;color:var(--texto-2)}
+.copiar{font:inherit;font-weight:700;color:var(--noche);background:var(--oro);border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
+@media (max-width:560px){.portada{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="envoltura">
+
+<section class="portada">
+  <svg viewBox="0 0 100 100" role="img" aria-label="Símbolo de Artavia: ojo de cerradura en un sello dorado">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD65C"/><stop offset="1" stop-color="#E3A600"/></linearGradient></defs>
+    <circle cx="50" cy="50" r="48" fill="url(#g)"/><circle cx="50" cy="50" r="41" fill="none" stroke="#121110" stroke-opacity=".18" stroke-width="2"/>
+    <circle cx="50" cy="40" r="13" fill="#121110"/><path d="M43 46 L57 46 L61 74 L39 74 Z" fill="#121110"/>
+  </svg>
+  <div>
+    <span class="etiqueta">Cerrajería 24 h · San José y Heredia</span>
+    <h1>Artavia, <span class="oro">de noche y en oro.</span></h1>
+    <p class="sub">La identidad que sale de la web nueva y se lleva a Facebook: un símbolo que se reconoce a 40 px, dos tipografías, una paleta de cinco colores y 11 piezas listas para publicar.</p>
+  </div>
+</section>
+
+<section>
+  <div><span class="etiqueta">Diagnóstico</span><h2>Cómo está la página hoy</h2>
+  <p class="sub">Revisión hecha el 30 de septiembre de 2026 desde Meta Business Suite, con acceso de administrador.</p></div>
+  <div class="dato">
+    <div><b>180</b><span>seguidores</span></div>
+    <div><b>8</b><span>publicaciones en total</span></div>
+    <div><b>6 de 8</b><span>son el mismo afiche, sin texto</span></div>
+    <div><b>31 mil</b><span>vistas del único reel: una llave programada en un carro</span></div>
+  </div>
+  <div class="tabla"><table>
+    <thead><tr><th>Qué</th><th>Estado</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Sitio web en la página</td><td><span class="estado estado--bien">Bien</span></td><td>cerrajeriaartavia.com ya aparece en Enlaces y en Detalles.</td></tr>
+      <tr><td>Teléfono, WhatsApp, correo</td><td><span class="estado estado--bien">Bien</span></td><td>7290 7799 (llamada y WhatsApp) y artaviacerrajeria@gmail.com. Coinciden con la web.</td></tr>
+      <tr><td>Horario y categoría</td><td><span class="estado estado--bien">Bien</span></td><td>Siempre abierto · Cerrajero.</td></tr>
+      <tr><td>Publicaciones repetidas</td><td><span class="estado estado--mal">Corregir</span></td><td>El afiche "¿Se le quedó la llave dentro?" está publicado 6 veces entre el 17 y el 29 de septiembre, todas sin texto. Facebook reparte menos lo repetido y nadie comparte una imagen sin mensaje.</td></tr>
+      <tr><td>Afiche de cobertura viejo</td><td><span class="estado estado--mal">Corregir</span></td><td>Uno de los afiches dice "Escazú, Sabana, Pavas, La Uruca, Hatillos". No coincide con la zona actual: San José y Heredia.</td></tr>
+      <tr><td>Foto de portada</td><td><span class="estado estado--mal">Corregir</span></td><td>Es el afiche cuadrado recortado a banner: se ve "Duplicado de llaves con y sin chip" cortado.</td></tr>
+      <tr><td>Foto de perfil</td><td><span class="estado estado--ojo">Mejorar</span></td><td>El logo de las nueve llaves se empasta en tamaño pequeño (comentarios, Messenger).</td></tr>
+      <tr><td>Presentación</td><td><span class="estado estado--ojo">Mejorar</span></td><td>"Nos distingue la confianza y calidad…" no dice qué hacen ni dónde. Propuesta abajo.</td></tr>
+      <tr><td>Opiniones</td><td><span class="estado estado--ojo">Mejorar</span></td><td>0 opiniones. Pedirle a cada cliente satisfecho que deje una. La web muestra "4.6★ con 32 opiniones en Google": confirmar ese dato o quitarlo.</td></tr>
+      <tr><td>Perfil personal "Cerrajería Artavia"</td><td><span class="estado estado--ojo">Revisar</span></td><td>Además de la página existe un perfil personal con el mismo nombre (31 amigos). Facebook prohíbe perfiles personales con nombre de negocio y puede cerrarlo; conviene usar solo la página.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div><span class="etiqueta">Identidad</span><h2>Lo que se mantiene en todo</h2>
+  <p class="sub">Noche cálida de fondo, oro solo en lo que importa: el teléfono, la palabra clave del titular y los botones.</p></div>
+  <div class="paleta">
+    <div class="muestra"><i style="background:#0F0E0C;border-bottom:1px solid var(--linea)"></i><div><b>Noche</b><code>#0F0E0C</code><button type="button" data-copiar="#0F0E0C">Copiar</button></div></div>
+    <div class="muestra"><i style="background:#242220"></i><div><b>Carbón</b><code>#242220</code><button type="button" data-copiar="#242220">Copiar</button></div></div>
+    <div class="muestra"><i style="background:#F5B400"></i><div><b>Oro</b><code>#F5B400</code><button type="button" data-copiar="#F5B400">Copiar</button></div></div>
+    <div class="muestra"><i style="background:#FFD65C"></i><div><b>Oro claro</b><code>#FFD65C</code><button type="button" data-copiar="#FFD65C">Copiar</button></div></div>
+    <div class="muestra"><i style="background:#F4EFE4"></i><div><b>Papel</b><code>#F4EFE4</code><button type="button" data-copiar="#F4EFE4">Copiar</button></div></div>
+  </div>
+  <div class="tipos">
+    <div class="tipo"><span class="grande">Le abrimos.</span><b>Bricolage Grotesque · 800</b><small>Titulares. Letras apretadas (−3 %), máximo 6 palabras por línea.</small></div>
+    <div class="tipo"><span class="texto">Abrimos sin dañar la cerradura, a la hora que sea.</span><b>Plus Jakarta Sans · 600</b><small>Textos y pies. Las dos son gratis en Google Fonts.</small></div>
+  </div>
+  <div class="voz">
+    <div><h3>Así sí</h3><q>¿Se quedó afuera? Salimos ya.</q><q>Le hacemos la llave aunque no tenga muestra.</q><span class="sub" style="font-size:14px">De usted, frases cortas, una idea por pieza, siempre con el teléfono.</span></div>
+    <div class="no"><h3>Así no</h3><q>Somos la solución más confiable y segura del mercado.</q><q>Rapidez · Confianza · Seguridad · 24 h · Autos · Casas…</q><span class="sub" style="font-size:14px">Frases genéricas o nueve servicios a la vez: no se recuerda ninguno.</span></div>
+  </div>
+</section>
+
+<section>
+  <div><span class="etiqueta">Piezas</span><h2>Once piezas listas para publicar</h2>
+  <p class="sub">Tamaños exactos de Facebook. Los textos para copiar de cada una están en <code>marca/textos-publicaciones.md</code> del repositorio.</p></div>
+  <div class="piezas">
+    <figure class="pieza pieza--ancha" style="margin:0"><img src="img/01-portada-facebook.jpg" alt="Portada de Facebook: cerradura 3D con el titular Le abrimos a cualquier hora y el teléfono" width="760" height="289" loading="lazy"><b>Portada de Facebook</b><span>1640 × 624 · texto fuera de la zona que tapa la foto de perfil</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/02-perfil.jpg" alt="Foto de perfil: ojo de cerradura negro en sello dorado, con Artavia debajo" width="540" height="540" loading="lazy"><b>Foto de perfil</b><span>720 × 720</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/10-lanzamiento-web.jpg" alt="Publicación: Estrenamos página web, con una ventana del navegador mostrando el sitio" width="540" height="675" loading="lazy"><b>Lanzamiento de la web</b><span>1080 × 1350 · publicar primero</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/03-trabajo-toyota.jpg" alt="Foto real: llave Toyota con chip frente al volante" width="540" height="675" loading="lazy"><b>Trabajo real · Toyota</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/04-trabajo-cilindros.jpg" alt="Foto real: tres cilindros nuevos con sus llaves" width="540" height="675" loading="lazy"><b>Trabajo real · Cilindros</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/05-trabajo-geely.jpg" alt="Foto real: control de Geely frente al emblema del carro rojo" width="540" height="675" loading="lazy"><b>Trabajo real · Geely</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/06-servicio-afuera.jpg" alt="Publicación: cerradura 3D con el titular ¿Se quedó afuera?" width="540" height="675" loading="lazy"><b>¿Se quedó afuera?</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/07-servicio-chip.jpg" alt="Publicación dorada: llave con chip 3D y el titular ¿Perdió la llave del carro?" width="540" height="675" loading="lazy"><b>¿Perdió la llave del carro?</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/08-consejo-senales.jpg" alt="Publicación: 3 señales de que su cerradura va a fallar" width="540" height="675" loading="lazy"><b>Consejo · para compartir</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/09-cobertura.jpg" alt="Publicación: radar de cobertura con cantones de San José y Heredia" width="540" height="675" loading="lazy"><b>Cobertura</b><span>1080 × 1350</span></figure>
+    <figure class="pieza" style="margin:0"><img src="img/11-historia-whatsapp.jpg" alt="Historia vertical: ¿Emergencia? Escríbanos, con botón verde de WhatsApp" width="540" height="960" loading="lazy"><b>Historia · WhatsApp</b><span>1080 × 1920 · con sticker de enlace</span></figure>
+  </div>
+</section>
+
+<section>
+  <div><span class="etiqueta">Pendiente de aprobación</span><h2>Cambios propuestos en Facebook</h2>
+  <p class="sub">Nada de esto se ha hecho todavía. Se aplican cuando el dueño de la página los apruebe.</p></div>
+  <div class="cambios">
+    <div class="cambio"><div><h3>Archivar 5 de los 6 afiches repetidos</h3><p>Se deja el más reciente. Archivar los oculta del muro sin borrarlos: se pueden restaurar cuando quieran.</p></div></div>
+    <div class="cambio"><div><h3>Archivar el afiche de cobertura viejo</h3><p>El que nombra Escazú, Sabana, Pavas, La Uruca y Hatillos. Lo reemplaza la pieza de Cobertura.</p></div></div>
+    <div class="cambio"><div><h3>Cambiar portada y foto de perfil</h3><p>Por las piezas 01 y 02 de esta guía.</p></div></div>
+    <div class="cambio"><div><h3>Reescribir la presentación</h3><p>Propuesta (Facebook permite 101 caracteres): <q>Cerrajería 24 h en San José y Heredia. Carros, casas y llaves con chip. cerrajeriaartavia.com</q></p></div></div>
+    <div class="cambio"><div><h3>Publicar el lanzamiento de la web</h3><p>Pieza 10 con su texto. Después, el calendario de 3 publicaciones por semana.</p></div></div>
+  </div>
+  <p class="nota">Lo que más alcance ha tenido la página es un video real de 15 segundos programando una llave (31 mil vistas), no los afiches. La regla para lo que venga: grabar cada trabajo con el celular en vertical.</p>
+</section>
+
+<section>
+  <div class="contacto"><span>Cerrajería Artavia · 7290 7799 · cerrajeriaartavia.com</span><button type="button" class="copiar" data-copiar="7290 7799">Copiar teléfono</button></div>
+</section>
+
+</div>
+<script>
+document.querySelectorAll('[data-copiar]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var v = b.getAttribute('data-copiar'), t = b.textContent;
+    var hecho = function () { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = t; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(hecho).catch(function () { b.textContent = v; });
+    } else { b.textContent = v; }
+  });
+});
+</script>
