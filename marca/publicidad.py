@@ -131,4 +131,79 @@ render("C-duotono-cilindros", f"""
 <div class="cta" style="background:var(--gold);color:var(--ink)"><span class="tel">{TEL}</span><span style="font-weight:800;font-size:24px;padding-right:22px">{WEB}</span></div>
 <div class="grain"></div>""")
 
+# ------------------------------------------------------------------ fotos de la página (traen borde negro: se recorta)
+def hd(n): return (RAIZ / "fotos-reales" / f"{n}-hd.jpg").resolve().as_uri()
+def recorte(src, pos="center", zoom=1.04):
+    return f'<img src="{src}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{pos};transform:scale({zoom})">'
+
+# ------------------------------------------------------------------ D. collage en cuadrícula (bento)
+def celda(src, tag, texto, x, y, w, h, pos="center"):
+    return f"""<div class="abs" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;border-radius:26px;overflow:hidden;background:#222">
+  {recorte(src, pos)}
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,14,12,.92))"></div>
+  <div class="abs" style="left:24px;right:24px;bottom:22px">
+    <span style="display:inline-block;font-size:15px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:999px;padding:6px 12px">{tag}</span>
+    <p class="d" style="font-size:36px;margin-top:10px;letter-spacing:-.03em;line-height:1">{texto}</p></div>
+</div>"""
+render("D-collage-servicios", f"""
+<div class="grid"></div>
+<div class="abs" style="left:56px;top:56px">{marca()}</div>
+<h1 class="d abs" style="left:56px;top:170px;font-size:92px">Un solo número<br><span class="gold">para todo esto.</span></h1>
+{celda(hd('cuna-aire'), 'Carros', 'Apertura sin<br>un rayón', 56, 410, 590, 380, '40% 40%')}
+{celda(hd('llave-quebrada'), 'Llaves', 'Llave quebrada<br>adentro', 666, 410, 358, 380, '35% 50%')}
+{celda(hd('ganzua'), 'Casas', 'Abrimos sin<br>romper nada', 56, 810, 358, 340, '62% 50%')}
+{celda(hd('maquina-llaves'), 'Duplicados', 'Copias de llaves<br>al momento', 434, 810, 590, 340, '45% 50%')}
+<div class="cta" style="background:var(--gold);color:var(--ink);bottom:56px;height:112px"><span class="tel">{TEL}</span><span class="btn" style="background:var(--ink);color:var(--gold2)">{WA_ICO}Llame o escriba</span></div>
+<div class="grain"></div>""")
+
+# ------------------------------------------------------------------ E. llave quebrada: fondo claro + el proceso
+ICO = {
+ "pinza": '<path d="M4 20l7-7M9 9l6 6M13 5l6 6-4 4-6-6z" />',
+ "lupa": '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
+ "llave": '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 6l2.5 2.5M13.5 8.5L16 11"/>',
+}
+def paso(ico, titulo, texto, ultimo=False):
+    linea = '' if ultimo else '<i class="abs" style="left:39px;top:84px;bottom:-26px;border-left:3px dashed rgba(18,17,16,.25)"></i>'
+    return f"""<li style="position:relative;display:flex;gap:26px;align-items:flex-start;padding-bottom:30px">{linea}
+  <span style="flex:0 0 80px;height:80px;border-radius:24px;background:var(--ink);color:var(--gold);display:grid;place-items:center">
+    <svg viewBox="0 0 24 24" style="width:40px;height:40px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{ICO[ico]}</svg></span>
+  <span><b class="d" style="display:block;font-size:40px;letter-spacing:-.03em">{titulo}</b><span style="display:block;font-size:24px;color:#5a554c;margin-top:8px;line-height:1.35;font-weight:600">{texto}</span></span></li>"""
+render("E-llave-quebrada", f"""
+<div class="abs" style="inset:0;background:var(--paper)"></div>
+<div class="abs" style="inset:0;opacity:.5;background-image:radial-gradient(rgba(18,17,16,.12) 1.3px,transparent 1.6px);background-size:26px 26px"></div>
+<div class="abs" style="right:-150px;top:90px;width:700px;height:700px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px var(--gold),0 50px 90px -30px rgba(0,0,0,.5)">
+  {recorte(hd('llave-quebrada'), '30% 45%', 1.08)}</div>
+<div class="abs" style="left:56px;top:56px;color:var(--ink)">{marca().replace('<small>', '<small style="color:#8a6a10">')}</div>
+<div class="abs" style="left:56px;top:250px;width:470px;color:var(--ink)">
+  <span class="pill" style="background:var(--ink);color:var(--gold2)">Emergencia</span>
+  <h1 class="d" style="font-size:100px;margin-top:26px">¿Se le<br>quebró<br>la llave?</h1>
+  <p style="font-size:28px;margin-top:22px;font-weight:700;color:#3d3932">No la jale con alicate: empuja el pedazo más adentro.</p>
+</div>
+<ul class="abs" style="left:56px;right:56px;top:800px;list-style:none;color:var(--ink)">
+  {paso('pinza', 'Sacamos el pedazo', 'Sin desarmar la puerta ni dañar el cilindro.')}
+  {paso('lupa', 'Revisamos la cerradura', 'Que no quede ningún resto adentro.')}
+  {paso('llave', 'Le hacemos la llave nueva', 'Ahí mismo, de casa o de carro.', True)}
+</ul>
+<div class="cta" style="background:var(--ink);color:var(--gold2)"><span class="tel">{TEL}</span><span class="btn" style="background:var(--gold);color:var(--ink)">{WA_ICO}Escríbanos</span></div>""")
+
+# ------------------------------------------------------------------ F. copias de llaves: pizarra de la tienda
+FILAS = [("Llave sencilla", "al momento"), ("Alto relieve / multipunto", "al momento"),
+         ("Llave de carro", "al momento"), ("Llave con chip", "programada"), ("Control de alarma", "nuevo o reparado")]
+filas = "".join(f"""<li style="display:flex;align-items:baseline;gap:16px;padding:17px 0;border-bottom:1.5px solid rgba(255,255,255,.08)">
+  <span style="font-size:32px;font-weight:700;white-space:nowrap">{a}</span>
+  <i style="flex:1;border-bottom:3px dotted rgba(245,180,0,.45);transform:translateY(-8px)"></i>
+  <span class="d" style="font-size:30px;color:var(--gold2);letter-spacing:-.02em;white-space:nowrap">{b}</span></li>""" for a, b in FILAS)
+render("F-copias-llaves", f"""
+<div class="abs" style="left:0;top:0;width:1080px;height:600px;overflow:hidden">{recorte(hd('maquina-llaves'), '40% 50%', 1.05)}
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(15,14,12,.6) 0%,rgba(15,14,12,.05) 30%,rgba(15,14,12,.2) 65%,#0F0E0C 100%)"></div></div>
+<div class="abs" style="left:56px;top:56px">{marca()}</div>
+<div class="abs" style="right:56px;top:470px;transform:rotate(6deg);width:170px;height:170px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 20px 40px -14px rgba(0,0,0,.8)">
+  <span style="font-size:15px;font-weight:800;letter-spacing:.16em">CON O SIN</span><span class="d" style="font-size:44px">muestra</span></div>
+<div class="abs" style="left:56px;right:56px;top:500px">
+  <h1 class="d" style="font-size:96px">Copias de llaves<br><span class="gold">al momento.</span></h1>
+  <ul style="list-style:none;margin-top:26px">{filas}</ul>
+</div>
+<div class="cta" style="background:var(--gold);color:var(--ink)"><span class="tel">{TEL}</span><span style="font-weight:800;font-size:24px;padding-right:22px">{WEB}</span></div>
+<div class="grain"></div>""")
+
 print("listo ->", OUT)
