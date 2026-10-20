@@ -238,7 +238,15 @@ button.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);c
 .quote{margin:0;background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:14px;align-content:space-between;position:relative}
 .quote::before{content:'“';position:absolute;top:6px;right:18px;font-family:'Bricolage Grotesque',serif;font-size:72px;line-height:1;color:var(--gold);opacity:.25}
 .quote p{color:var(--fg-3);font-weight:600;font-style:italic}
-.quote footer{font-size:13px;color:var(--fg-3);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.quote footer{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-3);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.quote p{color:var(--fg-2)}
+.quote__stars{color:var(--gold);letter-spacing:.12em;font-size:15px}
+.g-ico{width:18px;height:18px;flex:0 0 auto}
+a.rating{text-decoration:none;transition:transform var(--dur-micro)}
+a.rating:hover{transform:translateY(-3px)}
+.rating__ver{font-weight:800!important;font-size:14px!important}
+.reviews__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.reviews__cta .btn{gap:10px}
 
 /* faq: pantalla de decisión, solo se mueve lo que se toca */
 .faq{background:var(--night-2);border:1px solid var(--line);border-radius:18px;padding:0 20px;transition:border-color var(--dur-micro)}

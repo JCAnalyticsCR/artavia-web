@@ -50,9 +50,13 @@ def render(nombre, cuerpo):
 <body><div class="lienzo">{cuerpo}</div></body></html>"""
     f = TMP / f"{nombre}.html"; f.write_text(html, encoding="utf-8")
     png = OUT / f"{nombre}.png"
-    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
-                    f"--window-size={W},{H}", "--virtual-time-budget=8000", "--allow-file-access-from-files",
-                    f"--screenshot={png}", f.as_uri()], check=True, capture_output=True)
+    cmd = [CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+           f"--window-size={W},{H}", "--virtual-time-budget=8000", "--allow-file-access-from-files",
+           f"--screenshot={png}", f.as_uri()]
+    for intento in range(3):  # Chrome sin cabeza a veces se cae al arrancar; reintentar basta
+        if subprocess.run(cmd, capture_output=True).returncode == 0: break
+    else:
+        raise RuntimeError(f"Chrome no pudo renderizar {nombre}")
     print("ok", png.name)
 
 # ------------------------------------------------------------------ A. ojo de cerradura
@@ -207,3 +211,35 @@ render("F-copias-llaves", f"""
 <div class="grain"></div>""")
 
 print("listo ->", OUT)
+
+# ------------------------------------------------------------------ G. QR para dejar reseña en Google
+# El QR lleva directo al formulario de reseña del perfil (Place ID verificado contra el mapa).
+import segno
+RESENA = "https://search.google.com/local/writereview?placeid=ChIJG7zTX9f9oI8Rj1WHhTQZp1A"
+qr_svg = TMP / "qr-resena.svg"
+segno.make(RESENA, error="h").save(str(qr_svg), scale=10, border=0, dark="#121110", light=None)
+G_ICO = '<svg viewBox="0 0 24 24" style="width:40px;height:40px"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6a5.1 5.1 0 0 1-2.2 3.4v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.4-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.7 14a6.6 6.6 0 0 1 0-4.2V7H2a11 11 0 0 0 0 9.9z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2A11 11 0 0 0 2 7l3.7 2.9C6.6 7.3 9.1 5.4 12 5.4z"/></svg>'
+def paso_qr(t, d):
+    return f'<li style="flex:1;text-align:center"><b class="d" style="display:block;font-size:30px;letter-spacing:-.02em">{t}</b><span style="display:block;font-size:20px;color:var(--fg2);margin-top:6px;font-weight:600">{d}</span></li>'
+render("G-qr-resena", f"""
+<div class="grid"></div>
+<div class="abs" style="inset:0;background:radial-gradient(50% 36% at 50% 52%,rgba(245,180,0,.28),transparent 70%)"></div>
+<div class="abs" style="left:0;right:0;top:56px;display:flex;justify-content:center">{marca()}</div>
+<div class="abs" style="left:56px;right:56px;top:180px;text-align:center">
+  <h1 class="d" style="font-size:96px">¿Le gustó<br><span class="gold">el servicio?</span></h1>
+  <p style="font-size:30px;color:var(--fg2);margin-top:20px;font-weight:600">Escanee y déjenos su reseña en Google.<br>Nos ayuda muchísimo.</p>
+</div>
+<div class="abs" style="left:50%;top:530px;transform:translateX(-50%);width:520px;background:#FBF8F1;border-radius:36px;padding:40px 40px 26px;box-shadow:0 0 0 10px rgba(245,180,0,.9),0 50px 100px -30px rgba(0,0,0,.9)">
+  <div style="position:relative;width:440px;height:440px">
+    <img src="{qr_svg.as_uri()}" style="width:440px;height:440px;image-rendering:pixelated">
+    <div class="abs" style="left:50%;top:50%;transform:translate(-50%,-50%);width:112px;height:112px;border-radius:24px;background:#FBF8F1;display:grid;place-items:center">
+      <img src="{LOGO}" style="width:96px;height:96px;object-fit:contain"></div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;color:#121110">
+    {G_ICO}<span style="font-size:40px;color:#F5B400;letter-spacing:.06em">★★★★★</span></div>
+</div>
+<ul class="abs" style="left:56px;right:56px;top:1150px;list-style:none;display:flex;gap:20px">
+  {paso_qr('Abra la cámara', 'del celular')}{paso_qr('Apunte al código', 'y toque el enlace')}{paso_qr('Califique', 'y cuéntenos')}
+</ul>
+<div class="abs" style="left:0;right:0;bottom:44px;text-align:center;font-size:22px;font-weight:700;color:var(--fg3)">{TEL} · {WEB}</div>
+<div class="grain"></div>""")
