@@ -34,6 +34,55 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css?v=20261020a">
+<!-- Datos estructurados (Schema.org): le dicen a Google qué negocio es,
+     dónde está, a qué hora atiende y qué zonas cubre. Ayuda al SEO local. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Locksmith",
+  "@id": "https://cerrajeriaartavia.com/#negocio",
+  "name": "Cerrajería Artavia Servicio Express",
+  "url": "https://cerrajeriaartavia.com/",
+  "logo": "https://cerrajeriaartavia.com/img/logo.png",
+  "image": "https://cerrajeriaartavia.com/img/og.jpg",
+  "description": "Cerrajería automotriz, residencial y comercial 24 horas en Alajuelita. Apertura de vehículos, llaves con chip, llaves desde cero, controles, cajas fuertes y cerraduras a domicilio.",
+  "telephone": "+506 7290-7799",
+  "email": "artaviacerrajeria@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Frente a Calle Herrera, Corina Rodríguez",
+    "addressLocality": "Alajuelita",
+    "addressRegion": "San José",
+    "addressCountry": "CR"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  }],
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "San José, Costa Rica"},
+    {"@type": "AdministrativeArea", "name": "Heredia, Costa Rica"},
+    {"@type": "AdministrativeArea", "name": "Alajuela, Costa Rica"}
+  ],
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJG7zTX9f9oI8Rj1WHhTQZp1A",
+  "sameAs": ["https://www.facebook.com/p/Cerrajer%C3%ADa-Artavia-100089325142790/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de cerrajería",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apertura de vehículos sin dañar la cerradura"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Llaves con chip / transponder"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Llaves de carro desde cero, sin muestra"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Venta y reparación de controles para vehículo"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apertura de casas, oficinas y cajas fuertes"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Venta e instalación de cerraduras"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Amaestramiento y cambio de combinación"}}
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -60,7 +109,7 @@
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="wrap hero__in">
     <div class="hero__copy">
-      <p class="eyebrow"><span class="eyebrow__dot"></span>Cerrajería 24 h · San José y Heredia</p>
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Cerrajería 24 h · San José, Heredia y Alajuela</p>
       <h1 class="display">¿Se quedó sin llaves? <em>Le abrimos a cualquier hora.</em></h1>
       <p class="lead">Apertura de vehículos, llaves con chip, controles y llaves hechas desde cero. Vamos donde usted esté, a la hora que sea.</p>
       <div class="cta-row">
