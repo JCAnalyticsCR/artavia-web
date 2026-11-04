@@ -23,21 +23,33 @@
   });
 })();
 
-// Formulario de contacto: envío por Formspree sin recargar la página.
+// Formulario de contacto: arma el mensaje y lo abre en WhatsApp del negocio.
+// No depende de servicios externos ni cuentas: el mensaje llega directo al
+// 7290-7799, que es donde el cliente ya atiende. También registra la
+// conversión de Google Ads con la etiqueta "formulario".
 (function () {
   var form = document.getElementById('form-contacto');
   if (!form) return;
   var status = document.getElementById('form-status');
-  var button = form.querySelector('button[type="submit"]');
-  var textoOriginal = button.textContent;
+  var WHATSAPP = '50672907799';
+  var SEND_TO = 'AW-18411203647/uJPiCJ_Vy6IdEL_YkstE';
+  var enviadoEn = 0;
 
   function aviso(texto, tipo) {
     status.textContent = texto;
     status.className = 'form-status form-status--' + tipo;
   }
 
+  function campo(nombre, max) {
+    var el = form.elements[nombre];
+    return el ? String(el.value || '').trim().slice(0, max) : '';
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    // Trampa anti-bots: si el campo oculto viene lleno, se ignora en silencio.
+    if (campo('_gotcha', 100)) return;
 
     if (!form.checkValidity()) {
       aviso('Complete nombre, teléfono y el mensaje.', 'error');
@@ -45,35 +57,35 @@
       if (primero) primero.focus();
       return;
     }
-    if (form.action.indexOf('REEMPLAZAR_ID') !== -1) {
-      aviso('El formulario aún no está conectado. Llámenos al 7290-7799.', 'error');
-      return;
+
+    // Evita abrir WhatsApp dos veces por un doble toque.
+    var ahora = Date.now();
+    if (ahora - enviadoEn < 3000) return;
+    enviadoEn = ahora;
+
+    var texto =
+      'Hola, les escribo desde la página web.\n' +
+      'Nombre: ' + campo('nombre', 80) + '\n' +
+      'Teléfono: ' + campo('telefono', 30) + '\n' +
+      'Necesito: ' + campo('mensaje', 800);
+    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: SEND_TO,
+        event_label: 'formulario',
+        transport_type: 'beacon'
+      });
     }
 
-    button.disabled = true;
-    button.textContent = 'Enviando…';
-    aviso('', 'info');
+    // Pestaña nueva (como los demás botones de WhatsApp); si el navegador la
+    // bloquea, abre WhatsApp en la misma pestaña. (No se usa el flag 'noopener'
+    // en window.open porque hace que devuelva null y se abriría dos veces.)
+    var win = window.open(url, '_blank');
+    if (win) { win.opener = null; } else { window.location.href = url; }
 
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    })
-      .then(function (res) {
-        if (res.ok) {
-          form.reset();
-          aviso('Mensaje enviado. Le contestamos lo antes posible.', 'ok');
-        } else {
-          aviso('No se pudo enviar. Escríbanos por WhatsApp al 7290-7799.', 'error');
-        }
-      })
-      .catch(function () {
-        aviso('No se pudo enviar. Escríbanos por WhatsApp al 7290-7799.', 'error');
-      })
-      .finally(function () {
-        button.disabled = false;
-        button.textContent = textoOriginal;
-      });
+    form.reset();
+    aviso('Listo: se abrió WhatsApp con su mensaje. Solo toque "Enviar" ahí.', 'ok');
   });
 })();
 
