@@ -39,5 +39,12 @@
       event_label: tipo,
       transport_type: 'beacon' // se envía aunque el navegador cambie a la app de llamadas
     });
+    // Mismo contacto para Google Analytics 4 (G-ZBZ5SG4BJM), marcado allá como
+    // evento clave "contacto". metodo = llamada | whatsapp.
+    window.gtag('event', 'contacto', {
+      metodo: tipo,
+      send_to: 'G-ZBZ5SG4BJM',
+      transport_type: 'beacon'
+    });
   }, true);
 })();
