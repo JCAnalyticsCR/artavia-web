@@ -76,6 +76,15 @@
         event_label: 'formulario',
         transport_type: 'beacon'
       });
+      var m = window.artaviaMedicion;
+      window.gtag('event', 'contacto', {
+        metodo: 'formulario',
+        ubicacion: 'contacto',
+        profundidad: m ? m.profundidad() : 0,
+        segundos: m ? m.segundos() : 0,
+        send_to: 'G-ZBZ5SG4BJM',
+        transport_type: 'beacon'
+      });
     }
 
     // Pestaña nueva (como los demás botones de WhatsApp); si el navegador la
